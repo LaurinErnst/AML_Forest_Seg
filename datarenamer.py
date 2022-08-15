@@ -1,13 +1,21 @@
 import os
+from sys import displayhook
+import pandas as pd
 
 # assign directory
-directory = 'data/masks'
-i = 0
+im_directory = 'data/images/'
+mask_directory = 'data/masks/'
 
 
-for filename in os.listdir(directory):
-    f = os.path.join(directory, filename)
-    # checking if it is a file
-    if os.path.isfile(f):
-        i += 1
-        os.rename(f, directory + '/'+ str(i) + ".jpg")
+
+df = pd.read_csv('data/meta_data.csv')
+
+displayhook(df)
+
+n = 5107
+
+for i in range(n):
+    im_name = df["image"][i]
+    mask_name = df["mask"][i]
+    os.rename(im_directory + im_name, im_directory + str(i) + ".jpg")
+    os.rename(mask_directory + mask_name, mask_directory + str(i) + ".jpg")

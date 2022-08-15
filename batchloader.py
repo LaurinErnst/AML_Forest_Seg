@@ -21,7 +21,7 @@ def batchloader(batchsize = None, batch = None):
 
             b = data[:,2]
             b = b.reshape(256, 256).astype(np.uint8)
-
+            
             im = Image.fromarray(r)
             im.save("r.jpeg")
             im = Image.fromarray(g)
