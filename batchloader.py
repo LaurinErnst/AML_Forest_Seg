@@ -2,27 +2,33 @@ from sys import displayhook
 import pandas as pd
 import os
 from PIL import Image
-
-# assign directory
-directory = 'data/images'
-i = 0
-data = []
-log = open("log.txt", "w")
-
-print("starting")
-for filename in os.listdir(directory):
-    f = os.path.join(directory, filename)
-    # checking if it is a file
-    if os.path.isfile(f):
-        im = Image.open(f)
-        pixel_values = list(im.getdata())
-        data.append([pixel_values])
-        i += 1
+import numpy as np
 
 def batchloader(batchsize = None, batch = None):
     if batchsize == None and batch != None:
         directory = 'data/images/'
 
         for i in batch:
-            f = directory + str(i) + "jpg"
+            f = directory + "855_sat_01" + ".jpg"
             im = Image.open(f)
+            data = np.array(im.getdata())
+
+            r = data[:,0]
+            r = r.reshape(256, 256).astype(np.uint8)
+
+            g = data[:,1]
+            g = g.reshape(256, 256).astype(np.uint8)
+
+            b = data[:,2]
+            b = b.reshape(256, 256).astype(np.uint8)
+
+            im = Image.fromarray(r)
+            im.save("r.jpeg")
+            im = Image.fromarray(g)
+            im.save("g.jpeg")
+            im = Image.fromarray(b)
+            im.save("b.jpeg")
+            print(r)
+
+
+batchloader(None, [1])
