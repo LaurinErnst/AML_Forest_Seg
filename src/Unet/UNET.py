@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision
+import os
 
 class Block(nn.Module):
     def __init__(self, in_ch, out_ch):
@@ -57,7 +58,7 @@ class UNet(nn.Module):
         self.decoder     = Decoder(dec_chs)
         self.head        = nn.Conv2d(dec_chs[-1], num_class, 1)
         self.retain_dim  = retain_dim
-        out_sz = out_sz
+        self.out_sz = out_sz
 
     def forward(self, x):
         enc_ftrs = self.encoder(x)
@@ -66,3 +67,4 @@ class UNet(nn.Module):
         if self.retain_dim:
             out = F.interpolate(out, self.out_sz)
         return out
+

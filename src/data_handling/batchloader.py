@@ -2,13 +2,12 @@ import os
 from PIL import Image
 import numpy as np
 import torch
-import sys
 
 
 
 
-im_directory = '/data/images/'
-mask_directory = '/data/masks/'
+im_directory = 'data/images/'
+mask_directory = 'data/masks/'
 
 def batchloader(batchsize = None, batch = None):
 
@@ -21,6 +20,7 @@ def batchloader(batchsize = None, batch = None):
             f_mask = mask_directory + str(i) + ".jpg"
             im = Image.open(f_im)
             mask = Image.open(f_mask)
+            mask= mask.convert('L')
             
             # extract data into numpy array  
             im_data = np.array(im.getdata()).T
@@ -30,17 +30,17 @@ def batchloader(batchsize = None, batch = None):
             if j == 0:
 
                 data_im = np.array([im_data.reshape(3, 256, 256)])
-                data_mask = np.array([mask_data.reshape(3, 256, 256)])
+                data_mask = np.array([mask_data.reshape(1, 256, 256)])
                 j += 1
 
             else:
                 im_data = im_data.reshape(1, 3, 256, 256)
                 data_im = np.concatenate((data_im, im_data))
 
-                mask_data = mask_data.reshape(1, 3, 256, 256)
+                mask_data = mask_data.reshape(1, 1, 256, 256)
                 data_mask = np.concatenate((data_mask, mask_data))
         
-        return torch.tensor(data_im), torch.tensor(data_mask)
+        return torch.tensor(data_im).float(), torch.tensor(data_mask).float()
 
     if batchsize != None and batch == None:
 
@@ -53,6 +53,7 @@ def batchloader(batchsize = None, batch = None):
             f_mask = os.path.join(mask_directory, str(i) + ".jpg")
             im = Image.open(f_im)
             mask = Image.open(f_mask)
+            mask= mask.convert('L')
             
             # extract data into numpy array  
             im_data = np.array(im.getdata()).T
@@ -62,20 +63,18 @@ def batchloader(batchsize = None, batch = None):
             if j == 0:
 
                 data_im = np.array([im_data.reshape(3, 256, 256)])
-                data_mask = np.array([mask_data.reshape(3, 256, 256)])
+                data_mask = np.array([mask_data.reshape(1, 256, 256)])
                 j += 1
 
             else:
                 im_data = im_data.reshape(1, 3, 256, 256)
                 data_im = np.concatenate((data_im, im_data))
 
-                mask_data = mask_data.reshape(1, 3, 256, 256)
+                mask_data = mask_data.reshape(1, 1, 256, 256)
                 data_mask = np.concatenate((data_mask, mask_data))
         
-        return torch.tensor(data_im), torch.tensor(data_mask)
+        return torch.tensor(data_im).float(), torch.tensor(data_mask).float()
 
     if batchsize == None and batch == None:
         # if batchsize and batch are None raise Exception
         raise Exception("Weder batchsize noch batch deklariert!")
-
-batchloader(None, [1])

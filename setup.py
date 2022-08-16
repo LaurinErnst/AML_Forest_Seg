@@ -77,6 +77,7 @@ setup(
     entry_points={
         'console_scripts': [
             'train = Unet.UNet_training.train',
+            'batchloader = data_handling.batchloader',
         ]
     },
 )
