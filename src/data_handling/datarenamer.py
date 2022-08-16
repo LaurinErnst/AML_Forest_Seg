@@ -3,8 +3,10 @@ from sys import displayhook
 import pandas as pd
 
 # assign directory
-im_directory = 'data/images/'
-mask_directory = 'data/masks/'
+cur_path = os.path.dirname(__file__)
+
+im_directory = os.path.relpath('../data/images', cur_path)
+mask_directory = os.path.relpath('../data/masks', cur_path)
 
 
 
