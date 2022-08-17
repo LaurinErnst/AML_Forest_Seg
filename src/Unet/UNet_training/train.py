@@ -53,4 +53,5 @@ for e in range(10):
 plt.style.use("ggplot")
 plt.figure()
 plt.plot(H["train_loss"], label="train_loss")
+plt.show()
 
