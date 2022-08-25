@@ -2,27 +2,37 @@ import time
 from data_handling import dataloader
 from Unet import UNET as un
 import torch
-from torch.optim import Adam
 import matplotlib.pyplot as plt
 import tqdm
 from config import gen_config
+from config import example_model_config as model_con
 
 Model = un.Model(retain_dim=True)
 
-lossFunc = torch.nn.MSELoss()
-opt = Adam(Model.parameters())
+lossfunc = model_con.LOSS_FUNC
+
+opt = model_con.OPT(Model.parameters())
+
+
+# calculate steps per epoch for training and test set
+trainSteps = len(gen_config.TRAIN_SIZE) // model_con.BATCH_SIZE
+testSteps = len(gen_config.SET_SIZE - gen_config.TRAIN_SIZE) // model_con.BATCH_SIZE
+# initialize a dictionary to store training history
+H = {"train_loss": [], "test_loss": []}
+
 # ___________________loader setup_______________
 
-batch_size = 20
 
-loader = dataloader.dataloader(gen_config.SET_SIZE, gen_config.TRAIN_SIZE, batch_size)
+loader = dataloader.dataloader(
+    gen_config.SET_SIZE, gen_config.TRAIN_SIZE, model_con.BATCH_SIZE
+)
 
 # ___________________________________________
 
 # loop over epochs
 print("[INFO] training the network...")
 startTime = time.time()
-for e in tqdm(range(config.NUM_EPOCHS)):
+for e in tqdm(range(model_con.NUM_EPOCHS)):
     loader.start_new_epoch()
     # set the model in training mode
     # initialize the total training and validation loss
@@ -61,7 +71,7 @@ for e in tqdm(range(config.NUM_EPOCHS)):
     H["train_loss"].append(avgTrainLoss.cpu().detach().numpy())
     H["test_loss"].append(avgTestLoss.cpu().detach().numpy())
     # print the model training and validation information
-    print("[INFO] EPOCH: {}/{}".format(e + 1, config.NUM_EPOCHS))
+    print("[INFO] EPOCH: {}/{}".format(e + 1, model_con.NUM_EPOCHS))
     print("Train loss: {:.6f}, Test loss: {:.4f}".format(avgTrainLoss, avgTestLoss))
 # display the total time needed to perform the training
 endTime = time.time()
