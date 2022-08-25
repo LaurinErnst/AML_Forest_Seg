@@ -10,4 +10,5 @@ NUM_EPOCHS = 10
 # defines the loss function
 LOSS_FUNC = torch.nn.MSELoss()
 
+# defiens the model optimizer
 OPT = Adam
