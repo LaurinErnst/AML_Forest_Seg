@@ -10,19 +10,29 @@ Model = un.Model(retain_dim=True)
 
 lossFunc = torch.nn.MSELoss()
 opt = Adam(Model.parameters())
+#___________________loader setup_______________
+set_size = 5108
+train_size = 4000
+
+batch_size = 20
+
+loader = dataloader.dataloader(set_size, train_size, batch_size)
+
+#___________________________________________
 
 # loop over epochs
 print("[INFO] training the network...")
 startTime =  time.time()
 for e in tqdm(range(config.NUM_EPOCHS)):
+    loader.start_new_epoch()
 	# set the model in training mode
 	# initialize the total training and validation loss
     totalTrainLoss = 0
     totalTestLoss = 0
 
 	# loop over the training set
-    for i in range(train_steps):
-        x, y = loader.batchloader(10)
+    while not loader.epoch_finished():
+        x, y = loader.trainloader()
 		# perform a forward pass and calculate the training loss
         pred = Model(x)
         loss = lossFunc(pred, y)
@@ -38,12 +48,13 @@ for e in tqdm(range(config.NUM_EPOCHS)):
 		# set the model in evaluation mode
         Model.eval()
 		# loop over the validation set
-        for (x, y) in testLoader:
-			# send the input to the device
-            (x, y) = (x.to(config.DEVICE), y.to(config.DEVICE))
-			# make the predictions and calculate the validation loss
-            pred = Model(x)
-            totalTestLoss += lossFunc(pred, y)
+        while not loader.testdata_loaded():
+            for (x,y) in loader.testloader():
+                # send the input to the device
+                (x, y) = (x.to(config.DEVICE), y.to(config.DEVICE))
+                # make the predictions and calculate the validation loss
+                pred = Model(x)
+                totalTestLoss += lossFunc(pred, y)
 	# calculate the average training and validation loss    
     avgTrainLoss = totalTrainLoss / trainSteps
     avgTestLoss = totalTestLoss / testSteps
