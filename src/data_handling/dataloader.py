@@ -5,24 +5,43 @@ import numpy as np
 import torch
 
 class dataloader:
-    def __init__(self, set_size):
+    def __init__(self, set_size, train_size, batch_size):
         self.set = np.arange(set_size)
         self.trainingset = []
         self.testset = []
         self.set_size = set_size
-        self.train_size = 0
-
-    def set_splitter(self, train_size):
+        
+        self.batch_size = batch_size
+        
         self.train_size = train_size
-        self.trainingset = np.random.randint(self.set_size, train_size)
+        self.trainingset = np.random.randint(set_size, train_size)
         self.testset = [s not in self.trainingset for s in self.set]
+                
+        self.batch_counter = 0
+        self.test_counter = 0
 
-    def trainloader(self, batch_size):
-        batch = np.random.randint(self.train_size, batch_size)
+	def start_new_epoch(self):
+		self.batch_counter = 0
+		np.random.shuffle(self.trainingset)
+		
+	def epoch_finished(self):
+		return self.batch_counter >= int(self.train_size / self.batch_size)
+
+    def trainloader(self):
+        batch = trainingset[(batchcounter*self.batch_size):((batchcounter+1)*self.batch_size)]
+        self.batchcounter += 1
         return self.batchloader(self.trainingset[batch])
         
-    def testloader(self, batch_size):
-        batch = np.random.randint(self.test_size, batch_size)
+    def testdata_loaded(self):
+    	if self.test_counter >= int(self.test_size / 10):
+    		self.test_counter = 0
+    		return True
+    		
+    	return False
+        
+    def testloader(self):
+        batch = testset[(test_counter*10):((test_counter+1)*10)]
+        self.test_counter += 1
         return self.batchloader(self.testset[batch])
 
     def batchloader(batchsize = None, batch = None):
