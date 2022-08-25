@@ -17,9 +17,13 @@ class dataloader:
         self.trainingset = np.random.randint(self.set_size, train_size)
         self.testset = [s not in self.trainingset for s in self.set]
 
-    def dataloader(self, batch_size):
+    def trainloader(self, batch_size):
         batch = np.random.randint(self.train_size, batch_size)
         return self.batchloader(self.trainingset[batch])
+        
+    def testloader(self, batch_size):
+        batch = np.random.randint(self.test_size, batch_size)
+        return self.batchloader(self.testset[batch])
 
     def batchloader(batchsize = None, batch = None):
         
