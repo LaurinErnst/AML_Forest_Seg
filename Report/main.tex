@@ -1,0 +1,193 @@
+\documentclass[twoside,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[ngerman,english]{babel}
+\usepackage[a4paper,width=160mm,top=30mm,bottom=30mm,bindingoffset=5mm]{geometry} %%for the margins
+\usepackage{moresize} %for \HUGE
+\usepackage{fancyhdr} %used for page headers
+\usepackage{bbm} %for the indicator function
+\usepackage{enumerate} %steps in a proof
+\usepackage{mathrsfs} %for \mathscr
+\usepackage{parskip}
+\usepackage[onehalfspacing]{setspace}
+\allowdisplaybreaks
+\graphicspath{ {images/} }
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{white}{rgb}{1,1,1}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{gray75}{gray}{0.75}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\usepackage{titlesec, color}
+
+%redesign chapter and section headings
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\HUGE}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Large}
+\titlespacing*{\chapter}{0pt}{0pt}{30pt}
+\titleformat{\section}[hang]{\Large}{\thesection}{15pt}{\large}
+\titlespacing*{\section}{0pt}{0pt}{20pt}
+\titleformat{\subsection}[hang]{\Large}{\thesection}{15pt}{\large}
+
+
+%include and design page headers
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{\itshape \thechapter\ \ \ \ \leftmark}
+
+%abstract in two languages
+% \newenvironment{abstractpage}
+% {\cleardoublepage\vspace*{\fill}\thispagestyle{empty}}
+% {\vfill\cleardoublepage}
+% \renewenvironment{abstract}[1]
+% {\bigskip\selectlanguage{#1}%
+% 	\begin{center}\bfseries\abstractname\end{center}}
+% {\par\bigskip}
+
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+  colorlinks   = false, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor    = red   %Colour of citations
+		}
+
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\argmax}{argmax}
+
+\newcommand{\sM}{\mathcal{M}}
+\renewcommand{\vec}{\text{vec}}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\sX}{\mathcal{X}}
+\newcommand{\sY}{\mathcal{Y}}
+\newcommand{\sT}{\mathcal{T}}
+\newcommand{\sH}{\mathcal{H}}
+\newcommand{\sC}{\mathcal{C}}
+\newcommand{\sQ}{\mathcal{Q}}
+\newcommand{\sS}{\mathcal{S}} %neu
+\newcommand{\sV}{\mathcal{V}}
+\newcommand{\sU}{\mathcal{U}}
+\newcommand{\sD}{\mathcal{D}}
+
+
+\newcommand{\bN}{\textbf{N}}
+\newcommand{\bH}{\textbf{H}}
+
+
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\Ie}{\mathbbm{e}} %neu
+\newcommand{\IX}{\mathbb{X}} %neu
+\newcommand{\IY}{\mathbb{Y}} %neu
+\newcommand{\ID}{\mathbb{D}} %neu
+\newcommand{\IG}{\mathbb{G}} %neu
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\IZ}{\mathbb{Z}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\Ii}{\mathbbm{1}}
+
+
+
+
+\newcommand{\tr}{\text{tr}}
+
+\newcommand{\sE}{\mathcal{E}}
+\newcommand{\sB}{\mathcal{B}}
+\newcommand{\sF}{\mathcal{F}}
+\newcommand{\sG}{\mathcal{G}}
+\newcommand{\sL}{\mathcal{L}}
+\newcommand{\sN}{\mathcal{N}}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+
+
+\renewcommand{\d}{\,\mathrm{d}}
+\newcommand{\pii}{\boldsymbol{\pi}}
+%Konvergenzen
+\newcommand{\dto}{\overset{\sD}{\to}} %neu
+\newcommand{\asto}{\overset{a.s.}{\to}} %neu
+\newcommand{\pto}{\overset{\IP}{\to}} %neu
+\newcommand{\lto}{\overset{L^2}{\to}} %neu
+
+\newcommand{\gdw}{\Longleftrightarrow} %neu
+
+\newcommand{\bg}{\boldsymbol{g}}
+\renewcommand{\bf}{\boldsymbol{f}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\Z}{\boldsymbol{Z}}
+\newcommand{\iid}{\overset{iid}{\sim}}
+\newcommand{\one}{\mathbbm{1}}
+\newcommand{\Rang}{\mbox{Rang}}
+\newcommand{\supp}{\mbox{supp}}
+\newcommand{\argmin}{\mbox{argmin}}
+\newcommand{\dif}{\mbox{d}\!}
+\renewcommand{\l}{\ell}
+\newcommand{\reff}[1]{(\ref{#1})}
+\newcommand{\Tau}{\mathcal{T}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\input{chapters/titlepage}
+
+
+\newpage
+\thispagestyle{empty}\null\newpage
+
+\pagenumbering{roman}
+
+
+x
+\tableofcontents
+
+\thispagestyle{empty}\null\newpage
+
+\pagenumbering{arabic}
+\chapter{Introduction}
+\input{chapters/introduction}
+% \bibliography{authors}{}
+% \bibliographystyle{plain}
+
+
+\end{document}
