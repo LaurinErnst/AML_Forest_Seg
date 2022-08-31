@@ -3,20 +3,21 @@ from data_handling import dataloader
 from Unet import UNET as un
 import torch
 import matplotlib.pyplot as plt
-import tqdm
+from tqdm import tqdm
 from config import gen_config
-from config import example_model_config as model_con
+from config import UNET_MSE_SGD_1 as model_con
+from data_handling import net_saver
 
-Model = un.Model(retain_dim=True)
+Model = un.UNet(retain_dim=True)
 
-lossFunc = model_con.LOSS_FUNC
+lossFunc = model_con.LOSS_FUNC(**model_con.LOSS_PARAMS)
 
-opt = model_con.OPT(Model.parameters())
+opt = model_con.OPT(Model.parameters(), **model_con.OPT_PARAMS)
 
 
 # calculate steps per epoch for training and test set
-trainSteps = len(gen_config.TRAIN_SIZE) // model_con.BATCH_SIZE
-testSteps = len(gen_config.SET_SIZE - gen_config.TRAIN_SIZE) // model_con.BATCH_SIZE
+trainSteps = gen_config.TRAIN_SIZE // model_con.BATCH_SIZE
+testSteps = gen_config.SET_SIZE - gen_config.TRAIN_SIZE // model_con.BATCH_SIZE
 # initialize a dictionary to store training history
 H = {"train_loss": [], "test_loss": []}
 
@@ -76,3 +77,5 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
 # display the total time needed to perform the training
 endTime = time.time()
 print("[INFO] total time taken to train the model: {:.2f}s".format(endTime - startTime))
+
+net_saver.save_model(Model, model_con.NAME)

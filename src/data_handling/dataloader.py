@@ -15,7 +15,7 @@ class dataloader:
         self.batch_size = batch_size
 
         self.train_size = train_size
-        self.trainingset = np.random.randint(set_size, train_size)
+        self.trainingset = np.random.randint(set_size, size=train_size)
         self.testset = [s not in self.trainingset for s in self.set]
 
         self.batch_counter = 0
@@ -34,8 +34,8 @@ class dataloader:
                 (self.batch_counter + 1) * self.batch_size
             )
         ]
-        self.batchcounter += 1
-        return self.batchloader(self.trainingset[batch])
+        self.batch_counter += 1
+        return self.batchloader(batch=batch)
 
     def testdata_loaded(self):
         if self.test_counter >= int(self.test_size / 10):
@@ -47,14 +47,14 @@ class dataloader:
     def testloader(self):
         batch = self.testset[(self.test_counter * 10) : ((self.test_counter + 1) * 10)]
         self.test_counter += 1
-        return self.batchloader(self.testset[batch])
+        return self.batchloader(batch=batch)
 
-    def batchloader(batchsize=None, batch=None):
+    def batchloader(self, batchsize=None, batch=None):
 
         im_directory = "data/images/"
         mask_directory = "data/masks/"
         # if batch is given iterate throught batch indices
-        if batchsize == None and batch != None:
+        if batchsize == None and any(batch) != None:
             j = 0
             for i in batch:
                 # open image
@@ -84,7 +84,7 @@ class dataloader:
 
             return torch.tensor(data_im).float(), torch.tensor(data_mask).float()
 
-        if batchsize != None and batch == None:
+        if batchsize != None and any(batch) == None:
 
             # if batch is not given generate random batch of size batchsize
             batch = np.random.randint(5108, size=batchsize)

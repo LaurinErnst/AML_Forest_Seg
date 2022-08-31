@@ -8,6 +8,11 @@ src/AML_Projekt.egg-info/not-zip-safe
 src/AML_Projekt.egg-info/top_level.txt
 src/Unet/UNET.py
 src/Unet/__init__.py
+src/config/UNET_BCE_ADAM_1.py
+src/config/UNET_MSE_ADAM_1.py
+src/config/__init__.py
+src/config/example_model_config.py
+src/config/gen_config.py
 src/data_handling/__init__.py
 src/data_handling/batchloader.py
 src/data_handling/dataloader.py
