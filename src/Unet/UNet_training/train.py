@@ -9,7 +9,7 @@ from config import example_model_config as model_con
 
 Model = un.Model(retain_dim=True)
 
-lossfunc = model_con.LOSS_FUNC
+lossFunc = model_con.LOSS_FUNC
 
 opt = model_con.OPT(Model.parameters())
 
