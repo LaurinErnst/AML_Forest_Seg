@@ -7,6 +7,7 @@ from tqdm import tqdm
 from config import gen_config
 from config import UNET_MSE_SGD_1 as model_con
 from data_handling import net_saver
+from data_handling import graph_saver
 
 Model = un.UNet(retain_dim=True)
 
@@ -79,3 +80,9 @@ endTime = time.time()
 print("[INFO] total time taken to train the model: {:.2f}s".format(endTime - startTime))
 
 net_saver.save_model(Model, model_con.NAME)
+
+graph_saver.graph_saver(
+    H["train_loss"], model_con.NAME, title="Training Loss per Epoch"
+)
+
+graph_saver.graph_saver(H["test_loss"], model_con.NAME, title="Test Loss per Epoch")
