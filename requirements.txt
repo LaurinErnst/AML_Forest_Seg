@@ -1,0 +1,9 @@
+#Alle benötigten Python packages
+numpy
+PIL
+torch
+torchvision
+matplotlib.pyplot
+pickle
+tqdm
+

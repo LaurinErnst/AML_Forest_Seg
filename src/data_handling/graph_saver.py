@@ -1,5 +1,3 @@
-from tkinter import Y
-from unicodedata import name
 import matplotlib.pyplot as plt
 
 

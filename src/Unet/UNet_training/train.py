@@ -1,9 +1,8 @@
 import time
+import torch
+from tqdm import tqdm
 from data_handling import dataloader
 from Unet import UNET as un
-import torch
-import matplotlib.pyplot as plt
-from tqdm import tqdm
 from config import gen_config
 from config import UNET_MSE_SGD_1 as model_con
 from data_handling import net_saver
