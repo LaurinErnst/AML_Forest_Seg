@@ -1,5 +1,4 @@
 [console_scripts]
 config = config
-dataloader = data_handling.dataloader
 train = Unet.UNet_training.train
 

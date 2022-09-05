@@ -13,8 +13,7 @@ Model = un.UNet(retain_dim=True)
 lossFunc = model_con.LOSS_FUNC(**model_con.LOSS_PARAMS)
 
 opt = model_con.OPT(Model.parameters(), **model_con.OPT_PARAMS)
-
-
+print(sum(p.numel() for p in Model.parameters() if p.requires_grad))
 # calculate steps per epoch for training and test set
 trainSteps = gen_config.TRAIN_SIZE // model_con.BATCH_SIZE
 testSteps = gen_config.SET_SIZE - gen_config.TRAIN_SIZE // model_con.BATCH_SIZE

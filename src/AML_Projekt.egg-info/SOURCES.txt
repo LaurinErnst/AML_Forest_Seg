@@ -9,7 +9,9 @@ src/AML_Projekt.egg-info/top_level.txt
 src/Unet/UNET.py
 src/Unet/__init__.py
 src/config/UNET_BCE_ADAM_1.py
+src/config/UNET_BCE_SGD_1.py
 src/config/UNET_MSE_ADAM_1.py
+src/config/UNET_MSE_SGD_1.py
 src/config/__init__.py
 src/config/example_model_config.py
 src/config/gen_config.py
@@ -17,4 +19,5 @@ src/data_handling/__init__.py
 src/data_handling/batchloader.py
 src/data_handling/dataloader.py
 src/data_handling/datarenamer.py
+src/data_handling/graph_saver.py
 src/data_handling/net_saver.py

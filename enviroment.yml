@@ -1,0 +1,10 @@
+name: laurin
+
+dependencies:
+-numpy
+-PIL
+-torch
+-torchvision
+-matplotlib.pyplot
+-pickle
+-tqdm
