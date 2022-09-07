@@ -16,10 +16,12 @@ class dataloader:
 
         self.train_size = train_size
         self.trainingset = np.random.randint(set_size, size=train_size)
-        self.testset = [s not in self.trainingset for s in self.set]
 
+        self.test_size = self.set_size - self.train_size
         self.batch_counter = 0
         self.test_counter = 0
+        print(os.getcwd())
+        self.testset = list(set(self.set).difference(self.trainingset))
 
     def start_new_epoch(self):
         self.batch_counter = 0
@@ -38,14 +40,14 @@ class dataloader:
         return self.batchloader(batch=batch)
 
     def testdata_loaded(self):
-        if self.test_counter >= int(self.test_size / 10):
+        if self.test_counter >= int(self.test_size / 100):
             self.test_counter = 0
             return True
 
         return False
 
     def testloader(self):
-        batch = self.testset[(self.test_counter * 10) : ((self.test_counter + 1) * 10)]
+        batch = self.testset[(self.test_counter * 10) : ((self.test_counter + 1) * 100)]
         self.test_counter += 1
         return self.batchloader(batch=batch)
 
@@ -63,10 +65,9 @@ class dataloader:
                 im = Image.open(f_im)
                 mask = Image.open(f_mask)
                 mask = mask.convert("L")
-
                 # extract data into numpy array
                 im_data = np.array(im.getdata()).T
-                mask_data = np.array(mask.getdata()).T
+                mask_data = np.array(mask.getdata()).T / 255
 
                 # get data into right shape and concat image data to final data array
                 if j == 0:

@@ -5,7 +5,7 @@ import torch
 # define
 SET_SIZE = 5108
 # define the trainings set size
-TRAIN_SIZE = 4000
+TRAIN_SIZE = 10
 
 # determine the device to be used for training and evaluation
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

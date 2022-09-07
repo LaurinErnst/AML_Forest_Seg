@@ -4,10 +4,10 @@ from torch.optim import SGD
 
 NAME = "UNET_MSE_SGD_1"
 # defines the batchsize for the model
-BATCH_SIZE = 20
+BATCH_SIZE = 250
 
 # defines the number of epochs for the model
-NUM_EPOCHS = 10
+NUM_EPOCHS = 100
 
 # defines the loss function
 LOSS_FUNC = torch.nn.MSELoss
@@ -19,4 +19,4 @@ LOSS_PARAMS = {"reduction": "mean"}
 OPT = SGD
 
 
-OPT_PARAMS = {"lr": 0.1, "weight_decay": 1e-3}
+OPT_PARAMS = {"lr": 0.001, "weight_decay": 1e-3}

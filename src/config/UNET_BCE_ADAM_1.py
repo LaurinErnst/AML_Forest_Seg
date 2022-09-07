@@ -4,10 +4,10 @@ from torch.optim import Adam
 
 NAME = "UNET_BCE_ADAM_1"
 # defines the batchsize for the model
-BATCH_SIZE = 20
+BATCH_SIZE = 250
 
 # defines the number of epochs for the model
-NUM_EPOCHS = 10
+NUM_EPOCHS = 100
 
 # defines the loss function
 LOSS_FUNC = torch.nn.BCEWithLogitsLoss
