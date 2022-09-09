@@ -6,11 +6,12 @@ import torch
 
 
 class dataloader:
-    def __init__(self, set_size, train_size, batch_size):
+    def __init__(self, set_size, train_size, batch_size, test_batch_size=100):
         self.set = np.arange(set_size)
         self.trainingset = []
         self.testset = []
         self.set_size = set_size
+        self.test_batch_size = test_batch_size
 
         self.batch_size = batch_size
 
@@ -40,14 +41,18 @@ class dataloader:
         return self.batchloader(batch=batch)
 
     def testdata_loaded(self):
-        if self.test_counter >= int(self.test_size / 100):
+        if self.test_counter >= int(self.test_size / self.test_batch_size):
             self.test_counter = 0
             return True
 
         return False
 
     def testloader(self):
-        batch = self.testset[(self.test_counter * 10) : ((self.test_counter + 1) * 100)]
+        batch = self.testset[
+            (self.test_counter * self.test_batch_size) : (
+                (self.test_counter + 1) * self.test_batch_size
+            )
+        ]
         self.test_counter += 1
         return self.batchloader(batch=batch)
 

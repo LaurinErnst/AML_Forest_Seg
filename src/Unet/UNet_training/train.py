@@ -18,7 +18,7 @@ opt = model_con.OPT(Model.parameters(), **model_con.OPT_PARAMS)
 print(sum(p.numel() for p in Model.parameters() if p.requires_grad))
 # calculate steps per epoch for training and test set
 trainSteps = gen_config.TRAIN_SIZE // model_con.BATCH_SIZE
-testSteps = gen_config.SET_SIZE - gen_config.TRAIN_SIZE // model_con.BATCH_SIZE
+testSteps = (gen_config.SET_SIZE - gen_config.TRAIN_SIZE) // model_con.BATCH_SIZE
 # initialize a dictionary to store training history
 H = {"train_loss": [], "test_loss": []}
 
@@ -26,7 +26,10 @@ H = {"train_loss": [], "test_loss": []}
 
 
 loader = dataloader.dataloader(
-    gen_config.SET_SIZE, gen_config.TRAIN_SIZE, model_con.BATCH_SIZE
+    gen_config.SET_SIZE,
+    gen_config.TRAIN_SIZE,
+    model_con.BATCH_SIZE,
+    gen_config.TEST_BATCH_SiZE,
 )
 
 # ___________________________________________
@@ -57,7 +60,7 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
         opt.step()
         # add the loss to the total training loss so far
         totalTrainLoss += loss
-        print("[INFO] Loss of current batch: {}", loss)
+        print("[INFO] Loss of current batch: {}".format(loss.item()))
 
         x = x.cpu()
         y = y.cpu()
@@ -76,6 +79,7 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
             # make the predictions and calculate the validation loss
             pred = Model.forward(x)
             totalTestLoss += lossFunc(pred, y)
+            print(lossFunc(pred, y))
 
             x = x.cpu()
             y = y.cpu()
@@ -85,8 +89,8 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
     avgTrainLoss = totalTrainLoss / trainSteps
     avgTestLoss = totalTestLoss / testSteps
     # update our training history
-    H["train_loss"].append(avgTrainLoss.cpu().detach().numpy())
-    H["test_loss"].append(avgTestLoss.cpu().detach().numpy())
+    # H["train_loss"].append(avgTrainLoss.cpu().detach().numpy())
+    # H["test_loss"].append(avgTestLoss.cpu().detach().numpy())
     # print the model training and validation information
     print("[INFO] EPOCH: {}/{}".format(e + 1, model_con.NUM_EPOCHS))
     print("Train loss: {:.6f}, Test loss: {:.4f}".format(avgTrainLoss, avgTestLoss))

@@ -3,9 +3,13 @@ import torch
 
 
 # define
-SET_SIZE = 5108
+SET_SIZE = 15
 # define the trainings set size
 TRAIN_SIZE = 10
+
+# setting test batch size for dataloader
+TEST_BATCH_SiZE = 5
+
 
 # determine the device to be used for training and evaluation
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
