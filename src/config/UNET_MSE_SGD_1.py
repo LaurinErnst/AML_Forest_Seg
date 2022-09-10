@@ -7,7 +7,7 @@ NAME = "UNET_MSE_SGD_1"
 BATCH_SIZE = 5
 
 # defines the number of epochs for the model
-NUM_EPOCHS = 100
+NUM_EPOCHS = 5
 
 # defines the loss function
 LOSS_FUNC = torch.nn.MSELoss
@@ -19,4 +19,4 @@ LOSS_PARAMS = {"reduction": "mean"}
 OPT = SGD
 
 
-OPT_PARAMS = {"lr": 0.00001, "weight_decay": 1e-3}
+OPT_PARAMS = {"lr": 1e-4, "weight_decay": 0}

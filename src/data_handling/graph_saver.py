@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 
 def graph_saver(data, name, title="Loss", xlabel="Epochs", ylabel="Loss"):
-    plt.plot(data, name)
+    plt.plot(data)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.title(title)
