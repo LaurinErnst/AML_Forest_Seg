@@ -1,0 +1,2 @@
+UNET_MSE_SGD HAS BATCHSIZE 5
+BCE Both had batch size 125
