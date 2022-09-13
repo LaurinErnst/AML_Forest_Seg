@@ -4,7 +4,7 @@ from torch.optim import SGD
 
 NAME = "UNET_BCE_SGD_1"
 # defines the batchsize for the model
-BATCH_SIZE = 5
+BATCH_SIZE = 1
 
 # defines the number of epochs for the model
 NUM_EPOCHS = 5

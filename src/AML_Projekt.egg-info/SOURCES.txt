@@ -16,7 +16,6 @@ src/config/__init__.py
 src/config/example_model_config.py
 src/config/gen_config.py
 src/data_handling/__init__.py
-src/data_handling/batchloader.py
 src/data_handling/dataloader.py
 src/data_handling/datarenamer.py
 src/data_handling/graph_saver.py
