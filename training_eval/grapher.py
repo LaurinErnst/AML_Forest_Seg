@@ -55,32 +55,36 @@ with open("training_eval/" + file_names_file, mode="r") as infile:
                     dat.append(float(row[0]))
             data[i] = dat
         if i == 1:
+            plot = input("Plot data? (y/n): ")
+            if plot == "y":
+                # Initialise the figure and axes.
+                fig, ax = plt.subplots(1, figsize=(8, 6))
 
-            # Initialise the figure and axes.
-            fig, ax = plt.subplots(1, figsize=(8, 6))
-
-            # Set the title for the figure
-            fig.suptitle(input("title of plot: "), fontsize=15)
-            plt.xlabel(input("x_label: "))
-            plt.ylabel(input("y_label: "))
-            np.flip(data, axis=1)
-            # Draw all the lines in the same plot, assigning a label for each one to be
-            # shown in the legend.
-            ax.plot(range(1, 16), data[0], label="training_loss")
-            ax.plot(range(1, 16), data[1], label="test_loss")
-            plt.ylim(min([min(data[0]), min(data[1])]), 1)
-            # Add a legend, and position it on the lower right (with no box)
-            plt.legend(loc="upper right", frameon=False)
-            plt.show()
-
-            save = ""
-
-            while save != "y" and save != "n":
-                save = input("save plot? (y/n) ")
-
-            if save == "y":
+                # Set the title for the figure
+                fig.suptitle(input("title of plot: "), fontsize=15)
+                plt.xlabel(input("x_label: "))
+                plt.ylabel(input("y_label: "))
+                np.flip(data, axis=1)
+                # Draw all the lines in the same plot, assigning a label for each one to be
+                # shown in the legend.
+                ax.plot(range(1, 16), data[0], label="SGD")
+                ax.plot(range(1, 16), data[1], label="ADAM")
+                ylim = float(input("y upper limit: "))
+                plt.ylim(min([min(data[0]), min(data[1])]), ylim)
+                # Add a legend, and position it on the lower right (with no box)
+                plt.legend(loc="upper right", frameon=False)
                 name = input("name of file: ")
-                plt.savefig(directory + "/graphs/" + name + ".png")
+                fig.savefig(directory + "/graphs/" + name + ".png")
+                plt.show(block=False)
+
+                # save = ""
+
+                # while save != "y" and save != "n":
+                #     save = input("save plot? (y/n) ")
+
+                # if save == "y":
+                #     name = input("name of file: ")
+
             i = 0
         elif i == 0:
             i += 1

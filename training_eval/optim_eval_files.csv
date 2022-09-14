@@ -1,0 +1,9 @@
+train_UNET_BCE_SGD_1_data.csv
+train_UNET_BCE_ADAM_1_data.csv
+test_UNET_BCE_SGD_1_data.csv
+test_UNET_BCE_ADAM_1_data.csv
+train_UNET_MSE_SGD_1_data.csv
+train_UNET_MSE_ADAM_1_data.csv
+test_UNET_MSE_SGD_1_data.csv
+test_UNET_MSE_ADAM_1_data.csv
+
