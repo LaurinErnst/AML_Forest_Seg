@@ -3,10 +3,10 @@ import torch.nn as nn
 
 
 class SatBlock(nn.Module):
-	def __init__(self, in_channel, out_channel, kernel_size, stride):
+	def __init__(self, in_channel, out_channel, kernel_size, stride, padding='valid'):
 		super().__init__()
 		self.conv = nn.Conv2d(out_channels=out_channel, in_channels=in_channel,
-		                      kernel_size=kernel_size, stride=stride)
+		                      kernel_size=kernel_size, stride=stride, padding=padding)
 		self.batchnorm = nn.BatchNorm2d(out_channel)
 		self.relu = nn.ReLU()
 
@@ -15,12 +15,12 @@ class SatBlock(nn.Module):
 
 
 class AdditionBlock(nn.Module):
-	def __init__(self, in_channel, out_channel, kernel_size, stride):
+	def __init__(self, in_channel, out_channel, kernel_size):
 		super().__init__()
 		self.block = SatBlock(out_channel=out_channel, in_channel=in_channel,
-		                   kernel_size=kernel_size, stride=stride)
+		                      kernel_size=kernel_size, stride=1, padding='same')
 		self.conv2 = nn.Conv2d(out_channels=out_channel, in_channels=out_channel,
-		                       kernel_size=kernel_size, stride=stride)
+		                       kernel_size=kernel_size, stride=1, padding='same')
 		self.batchnorm2 = nn.BatchNorm2d(out_channel)
 		self.relu2 = nn.ReLU()
 
@@ -33,8 +33,9 @@ class DoubleAdditionBlock(nn.Module):
 	             kernel_size3, stride):
 		super().__init__()
 		self.block1 = SatBlock(in_channel, out_channel, kernel_size1, stride)
-		self.block2 = SatBlock(in_channel, out_channel, kernel_size2, stride)
-		self.conv3 = nn.Conv2d(out_channel, out_channel, kernel_size3, 1)
+		self.block2 = SatBlock(in_channel, out_channel, kernel_size2,
+		                       stride, padding=(3,3))
+		self.conv3 = nn.Conv2d(out_channel, out_channel, kernel_size3, 1, padding='same')
 		self.batchnorm3 = nn.BatchNorm2d(out_channel)
 		self.relu3 = nn.ReLU()
 
@@ -51,14 +52,15 @@ class SatEncoder(nn.Module):
 
 		blocks.append(SatBlock(3, 32, 7, 2))
 
-		blocks.append(AdditionBlock(32, 32, 3, 1))
-		blocks.append(AdditionBlock(32, 32, 3, 1))
-		blocks.append(AdditionBlock(32, 32, 3, 1))
+		blocks.append(AdditionBlock(32, 32, 3))
+		blocks.append(AdditionBlock(32, 32, 3))
+		blocks.append(AdditionBlock(32, 32, 3))
 
 		blocks.append(DoubleAdditionBlock(32, 64, 1, 7, 3, 2))
 
-		blocks.append(AdditionBlock(32, 32, 3, 1))
-		blocks.append(AdditionBlock(32, 32, 3, 1))
+		blocks.append(AdditionBlock(64, 64, 3))
+		blocks.append(AdditionBlock(64, 64, 3))
+		blocks.append(AdditionBlock(64, 64, 3))
 
 		blocks.append(nn.Dropout(p_dropout))
 
@@ -76,11 +78,11 @@ class SatDecoder(nn.Module):
 
 		blocks = []
 
-		blocks.append(nn.ConvTranspose2d(64, 16, 16, stride=2))
+		blocks.append(nn.ConvTranspose2d(64, 16, 16, stride=2, padding=(7,7)))
 		blocks.append(nn.BatchNorm2d(16))
 		blocks.append(nn.ReLU())
 
-		blocks.append(nn.ConvTranspose2d(16, 1, 16, stride=2))
+		blocks.append(nn.ConvTranspose2d(16, 1, 16, stride=2, padding=(5,5)))
 		blocks.append(nn.Sigmoid())
 
 		self.blocks = nn.ModuleList(blocks)
@@ -92,11 +94,10 @@ class SatDecoder(nn.Module):
 
 
 class SatNet(nn.Module):
-	def __int__(self, p_drop=0.5):
+	def __init__(self, p_drop=0.5):
 		super().__init__()
 		self.encoder = SatEncoder(p_drop)
 		self.decoder = SatDecoder()
 
 	def forward(self, x):
 		return self.decoder(self.encoder(x))
-

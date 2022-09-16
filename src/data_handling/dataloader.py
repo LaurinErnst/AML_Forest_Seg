@@ -58,8 +58,8 @@ class dataloader:
 
     def batchloader(self, batchsize=None, batch=None):
 
-        im_directory = "data/images/"
-        mask_directory = "data/masks/"
+        im_directory = "programming/python/AML_Forest_Seg/data/images/"
+        mask_directory = "programming/python/AML_Forest_Seg/data/masks/"
         # if batch is given iterate throught batch indices
         if batchsize == None and any(batch) != None:
             j = 0
