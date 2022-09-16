@@ -1,4 +1,4 @@
 [console_scripts]
 config = config
 train = Unet.UNet_training.train
-
+trainSat = Satnet.SatnetTraining.train

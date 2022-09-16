@@ -6,6 +6,13 @@ src/AML_Projekt.egg-info/dependency_links.txt
 src/AML_Projekt.egg-info/entry_points.txt
 src/AML_Projekt.egg-info/not-zip-safe
 src/AML_Projekt.egg-info/top_level.txt
+src/Satnet/__init__.py
+src/Satnet/satnet.py
+src/Satnet/SatnetTraining/__init__.py
+src/Satnet/SatnetTraining/train_1.py
+src/Satnet/SatnetTraining/train_2.py
+src/Satnet/SatnetTraining/train_3.py
+src/Satnet/SatnetTraining/train_4.py
 src/Unet/UNET.py
 src/Unet/__init__.py
 src/config/UNET_BCE_ADAM_1.py

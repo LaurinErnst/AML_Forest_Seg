@@ -76,6 +76,7 @@ setup(
     entry_points={
         "console_scripts": [
             "train = Unet.UNet_training.train",
+            "trainSat = Satnet.SatnetTraining.train",
             "config = config",
         ]
     },
