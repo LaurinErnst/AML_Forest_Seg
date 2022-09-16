@@ -1,13 +1,10 @@
-Metadata-Version: 1.2
+Metadata-Version: 2.1
 Name: AML-Projekt
 Version: 1
 Summary: AML_Abschlussprojekt
-Home-page: UNKNOWN
 Author: test
 Author-email: test@test.test
 License: BSD-2-Clause
-Description: UNKNOWN
-Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: BSD License
