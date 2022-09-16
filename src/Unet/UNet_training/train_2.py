@@ -108,7 +108,9 @@ print("[INFO] total time taken to train the model: {:.2f}s".format(endTime - sta
 net_saver.save_model(Model, model_con.NAME)
 
 graph_saver.graph_saver(
-    H["train_loss"], model_con.NAME, title="Training Loss per Epoch"
+    H["train_loss"], "train_" + model_con.NAME, title="Training Loss per Epoch"
 )
 
-graph_saver.graph_saver(H["test_loss"], model_con.NAME, title="Test Loss per Epoch")
+graph_saver.graph_saver(
+    H["test_loss"], "test_" + model_con.NAME, title="Test Loss per Epoch"
+)

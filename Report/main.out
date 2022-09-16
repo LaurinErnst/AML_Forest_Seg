@@ -1,1 +1,9 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Data Preprocessing}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Unet training}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Overall training procedure}{chapter.3}% 4
+\BOOKMARK [1][-]{section.3.2}{Choice of Loss functions and optimizers}{chapter.3}% 5
+\BOOKMARK [1][-]{section.3.3}{Training hyperparameter's}{chapter.3}% 6
+\BOOKMARK [2][-]{subsection.3.3.1}{Loss functions}{section.3.3}% 7
+\BOOKMARK [2][-]{subsection.3.3.2}{Optimizer parameters}{section.3.3}% 8
+\BOOKMARK [2][-]{subsection.3.3.3}{Batch size}{section.3.3}% 9
