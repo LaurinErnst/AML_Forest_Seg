@@ -3,6 +3,7 @@ import os
 from PIL import Image
 import numpy as np
 import torch
+import gc
 
 
 class dataloader:
@@ -67,16 +68,17 @@ class dataloader:
                 # open image
                 f_im = im_directory + str(i) + ".jpg"
                 f_mask = mask_directory + str(i) + ".jpg"
-                im = Image.open(f_im)
-                mask = Image.open(f_mask)
-                mask = mask.convert("L")
+                with Image.open(f_im) as im:
+                    im_data = np.array(im.getdata()).T
+                with Image.open(f_mask) as mask:
+                    mask_data = np.array(mask.convert("L").getdata()).T / 255
+                # im = Image.open(f_im)
+                # mask = Image.open(f_mask)
+                # mask = mask.convert("L")
                 # extract data into numpy array
-                im_data = np.array(im.getdata()).T
-                mask_data = np.array(mask.getdata()).T / 255
 
                 # get data into right shape and concat image data to final data array
                 if j == 0:
-
                     data_im = np.array([im_data.reshape(3, 256, 256)])
                     data_mask = np.array([mask_data.reshape(1, 256, 256)])
                     j += 1
@@ -87,7 +89,9 @@ class dataloader:
 
                     mask_data = mask_data.reshape(1, 1, 256, 256)
                     data_mask = np.concatenate((data_mask, mask_data))
-
+                # im.close()
+                # mask.close()
+                gc.collect()
             return torch.tensor(data_im).float(), torch.tensor(data_mask).float()
 
         if batchsize != None and any(batch) == None:
@@ -120,7 +124,9 @@ class dataloader:
 
                     mask_data = mask_data.reshape(1, 1, 256, 256)
                     data_mask = np.concatenate((data_mask, mask_data))
-
+                im.close()
+                mask.close()
+                gc.collect()
             return torch.tensor(data_im).float(), torch.tensor(data_mask).float()
 
         if batchsize == None and batch == None:

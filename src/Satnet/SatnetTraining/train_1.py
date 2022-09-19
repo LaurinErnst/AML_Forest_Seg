@@ -42,7 +42,10 @@ loader = dataloader.dataloader(
 print("[INFO] training the network...")
 startTime = time.time()
 for e in tqdm(range(model_con.NUM_EPOCHS)):
-
+    print("_______")
+    print("epoch")
+    print(e)
+    print("______")
     Model.train()
     gc.collect()
     loader.start_new_epoch()
@@ -53,16 +56,17 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
 
     # loop over the training set
     while not loader.epoch_finished():
+        opt.zero_grad()
         x, y = loader.trainloader()
         x, y = x.to(gen_config.DEVICE), y.to(gen_config.DEVICE)
         # perform a forward pass and calculate the training loss
         pred = Model.forward(x)
-        loss = lossFunc(pred, y)
+        loss = lossFunc(pred, y.detach())
         # first, zero out any previously accumulated gradients, then
         # perform backpropagation, and then update model parameters
-        opt.zero_grad()
         loss.backward()
         opt.step()
+        loss.detach()
         # add the loss to the total training loss so far
         totalTrainLoss += loss
         print("[INFO] Loss of current batch: {}".format(loss.item()))
@@ -71,6 +75,8 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
         y = y.cpu()
 
         gc.collect()
+        torch.cuda.empty_cache()
+        del x, y
 
     # switch off autograd
     with torch.no_grad():
@@ -90,6 +96,8 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
             y = y.cpu()
 
             gc.collect()
+            torch.cuda.empty_cache()
+            del x, y
 
     scheduler.step()
     # calculate the average training and validation loss
