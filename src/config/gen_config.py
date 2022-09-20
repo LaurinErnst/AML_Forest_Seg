@@ -3,12 +3,12 @@ import torch
 
 
 # define
-SET_SIZE = 2
+SET_SIZE = 300
 # define the trainings set size
-TRAIN_SIZE = 1
+TRAIN_SIZE = 250
 
 # setting test batch size for dataloader
-TEST_BATCH_SiZE = 1
+TEST_BATCH_SiZE = 50
 
 
 # determine the device to be used for training and evaluation
