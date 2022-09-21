@@ -57,7 +57,42 @@ class dataloader:
         self.test_counter += 1
         return self.batchloader(batch=batch)
 
-    def batchloader(self, batchsize=None, batch=None):
+    def load_all(self):
+        im_directory = "data/images/"
+        mask_directory = "data/masks/"
+
+        j = 0
+        for i in range(5108):
+            # open image
+            f_im = os.path.join(im_directory, str(i) + ".jpg")
+            f_mask = os.path.join(mask_directory, str(i) + ".jpg")
+            im = Image.open(f_im)
+            mask = Image.open(f_mask)
+            mask = mask.convert("L")
+
+            # extract data into numpy array
+            im_data = np.array(im.getdata()).T
+            mask_data = np.array(mask.getdata()).T
+
+            # get data into right shape and concat image data to final data array
+            if j == 0:
+
+                data_im = np.array([im_data.reshape(3, 256, 256)])
+                data_mask = np.array([mask_data.reshape(1, 256, 256)])
+                j += 1
+
+            else:
+                im_data = im_data.reshape(1, 3, 256, 256)
+                data_im = np.concatenate((data_im, im_data))
+
+                mask_data = mask_data.reshape(1, 1, 256, 256)
+                data_mask = np.concatenate((data_mask, mask_data))
+            im.close()
+            mask.close()
+            gc.collect()
+        return torch.tensor(data_im).float(), torch.tensor(data_mask).float()
+
+    def batchloader(batchsize=None, batch=None):
 
         im_directory = "data/images/"
         mask_directory = "data/masks/"
