@@ -1,7 +1,7 @@
 import gc
 
 import numpy as np
-from data_handling.dataloader import DataLoader
+from data_handling.dataloader import load_one
 import pickle
 import torch
 import io
@@ -31,13 +31,10 @@ def jaccard_index(mask_true, mask_pred):
 
 
 def test_model(model, n=5, jacaard=False):
-	dl = DataLoader(0, 0, 0)
-
 	losses = []
 
 	for i in range(5108):
-		# x, y = dl.load_all()
-		x, y = dl.load_one(i)
+		x, y = load_one(i)
 		y = y / 255
 
 		gc.collect()

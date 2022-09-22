@@ -3,7 +3,7 @@ import torch
 import io
 
 import torchvision.transforms as t
-from data_handling.dataloader import DataLoader
+from data_handling.dataloader import load_one
 
 
 class NetRecovery(pickle.Unpickler):
@@ -39,11 +39,10 @@ def create_overlap(background, overlap):
 
 
 def create_masks(model, indices):
-	dl = DataLoader(0, 0, 0)
 	images = []
 
 	for i in indices:
-		img, mask = dl.load_one(i)
+		img, mask = load_one(i)
 		y = model(img)
 
 		real_overlap = create_overlap(img[0], mask[0])
