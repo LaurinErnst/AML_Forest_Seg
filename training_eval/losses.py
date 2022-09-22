@@ -30,7 +30,7 @@ def jaccard_index(mask_true, mask_pred):
 	return torch.sum(intersection) / torch.sum(union)
 
 
-def test_model(model, n=5, jacaard=False):
+def test_model(model, n=5, jaccard=False):
 	losses = []
 
 	for i in range(5108):
@@ -41,9 +41,11 @@ def test_model(model, n=5, jacaard=False):
 
 		if i % 100 == 0:
 			print(i / 5108)
-		y_hat = model(x)
+		
+		with torch.no_grad():
+			y_hat = torch.sigmoid(model(x))
 
-		if jacaard:
+		if jaccard:
 			losses.append(jaccard_index(y, y_hat))
 		else:
 			losses.append(percentage_right(y, y_hat))
@@ -64,4 +66,5 @@ class NetRecovery(pickle.Unpickler):
 
 with open("testmodel", "rb") as file:
 	m = NetRecovery(file).load()
-print(test_model(m, jacaard=True))
+print(test_model(m, jaccard=True))
+

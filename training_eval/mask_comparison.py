@@ -3,6 +3,7 @@ import torch
 import io
 
 import torchvision.transforms as t
+from NaiveSegmentation.naivesegmentation import naive_seg
 from data_handling.dataloader import load_one
 
 
@@ -55,6 +56,6 @@ def create_masks(model, indices):
 
 with open("testmodel", "rb") as file:
 	m = NetRecovery(file).load()
-create_masks(m, [1, 2, 3, 4])
+create_masks(m, [4068,187,2709,2703,1247])
 
 
