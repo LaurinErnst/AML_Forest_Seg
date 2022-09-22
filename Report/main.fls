@@ -230,8 +230,9 @@ INPUT ./images/best-MSE-SGD-UNET.png
 INPUT /Users/laurin/AML_Forest_Seg/Report/./images/best-MSE-ADAM-UNET.png
 INPUT ./images/best-MSE-ADAM-UNET.png
 INPUT ./images/best-MSE-ADAM-UNET.png
-INPUT /Users/laurin/AML_Forest_Seg/Report/main.bbl
-INPUT /Users/laurin/AML_Forest_Seg/Report/main.bbl
+INPUT /Users/laurin/AML_Forest_Seg/Report/./images/best-BCE-SGD-UNET.png
+INPUT ./images/best-BCE-SGD-UNET.png
+INPUT ./images/best-BCE-SGD-UNET.png
 INPUT /Users/laurin/AML_Forest_Seg/Report/main.aux
 INPUT /Users/laurin/AML_Forest_Seg/Report/main.out
 INPUT /Users/laurin/AML_Forest_Seg/Report/main.out
