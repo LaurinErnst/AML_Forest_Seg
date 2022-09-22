@@ -13,9 +13,10 @@
 \usepackage{enumerate} %steps in a proof
 \usepackage{mathrsfs} %for \mathscr
 \usepackage{parskip}
+\usepackage{float}
 \usepackage[onehalfspacing]{setspace}
 \allowdisplaybreaks
-\graphicspath{ {images/} }
+\graphicspath{ {./images/} }
 
 
 \usepackage{listings}
@@ -190,6 +191,9 @@ x
 \input{chapters/data_prep}
 \chapter{Unet training}
 \input{chapters/unet_training}
+\chapter{Training evaluation}
+\input{chapters/eval}
+\clearpage\input{chapters/sgd_vs_adam.tex}
 % \bibliography{authors}{}
 % \bibliographystyle{plain}
 

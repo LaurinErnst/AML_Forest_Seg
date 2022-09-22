@@ -1,12 +1,43 @@
-The dataset from Kaggle of 5108 arial forest images and its mask respectively. Each image was saved in the jpg format meaning our dataset had a size of approximately 185 MB. 
-Our first intuition was that, since jpg is a compressed file format, loading jpgs could take longer than loading from uncompressed files. Thus we tried saving our data first as json and second in pythons pickle dataformat. Both times this lead to a massively inflated dataset of around 5 GB in size.
+The dataset from Kaggle of 5108 arial forest images and its mask 
+respectively. The where all already formatted to 256 x 256 pixel. 
+Furthermore the images looked clean, hence we did not need to do 
+a lot of cleaning of the data.
 
-When timing dataloading, loading jpgs using pythons Python Image Library was actually faster than loading jsons using pandas. Hence we load our data from jpegs.
+Each image was saved in the jpg format meaning our 
+dataset had a size of approximately 185 MB. 
+Our first intuition was that, since jpg is a 
+compressed file format, loading jpgs could take longer 
+than loading from uncompressed files. Thus we tried saving our 
+data first as json and second in pythons pickle dataformat. 
+Both times this lead to a massively inflated dataset of 
+around 5 GB in size.
 
-A big part of our work is our custom dataloader. It arose from our need for a lot of customizabilty as it not only loads data from our custom source but also formats our masks. Every mask consists of white pixels with value 255 and black pixels with value 0. Trying to make our loss easier to interpret we decided to set each white pixel to 1.
-In the end our dataloader works similar to a standard dataloader from pytorch for example. 
-On initialization you set the size of the Dataset you want to use, the set of the trainings set, the batch size you want and optionally the batch set for the test set (we used this as we tried our program on different machines thus for more efficiency it was important to be able to control the batch size for the test set).
+When timing dataloading, loading jpgs using pythons 
+Python Image Library was actually faster than loading jsons 
+using pandas. Hence we load our data from jpegs.
 
-The batch loading itself is done by the function batchloader. On each new epoch the trainingset is shuffled randomly using numpys shuffle function. The epoch\_ finished function is used to check wether the dataset has been completely stepped through and if therefore a new epoch has to be started.
+A big part of our work is our custom dataloader. 
+It arose from our need for a lot of customizability as it not 
+only loads data from our custom source but also formats our masks.
+ Every mask consists of white pixels with value 255 and black 
+ pixels with value 0. Trying to make our loss easier to interpret 
+ we decided to set each white pixel to 1.
+In the end our dataloader works similar to a standard dataloader 
+from pytorch for example. 
+On initialization you set the size of the Dataset you want to 
+use, the set of the trainings set, the batch size you want and 
+optionally the batch set for the test set 
+(we used this as we tried our program on different machines thus for 
+more efficiency it was important to be able to control the batch size 
+for the test set).
 
-Our image data is returned as pytorch tensors respectively containing three arrays for every image one for red one for green and one for blue. Our mask data is returned as a pytorch tensor consisting of only one array per mask containing of zeros and ones.
+The batch loading itself is done by the function batchloader. 
+On each new epoch the trainingset is shuffled randomly using numpys 
+shuffle function. The epoch\_ finished function is used to check wether
+ the dataset has been completely stepped through and if therefore a new 
+ epoch has to be started.
+
+Our image data is returned as pytorch tensors respectively containing 
+three arrays for every image one for red one for green and one for blue.
+ Our mask data is returned as a pytorch tensor consisting of only one
+  array per mask containing of zeros and ones.

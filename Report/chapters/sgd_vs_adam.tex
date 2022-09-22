@@ -1,0 +1,22 @@
+
+\clearpage
+\section{SGD compared to ADAM}
+
+Taking a look at figure \ref{fig:sgd_vs_adam} we can compare the effectiveness of SGD and ADAM. In all cases 
+the models trained using ADAM have a steeper drop in the beginning compared to the models trained using SGD. 
+After 5 epochs the change of loss gets smaller and both models seem to converge. But SGD remains higher than ADAM.
+This could have different explanations. Since we decreased the learning rate every five epochs, it could be that SGD just
+converges slower than ADAM thus it does not have enough time under a big learning rate to go down enough. At the same time 
+it could also be possible, that ADAM is just better at minimizing and that SGD only circles around a local minimum and thus we should 
+have decreased the learning rate more such that SGD start taking small steps towards the local minimum and does not overshoot it every 
+time. 
+
+\begin{figure}[h]
+\begin{tabular}{c c}   
+    
+    \includegraphics[width=.4\linewidth]{sgd_vs_adam_mse_test.png} & \includegraphics[width=.4\linewidth]{sgd_vs_adam_mse_train.png} \\ 
+
+    \includegraphics[width=.4\linewidth]{sgd_vs_adam_bce_test.png} & \includegraphics[width=.4\linewidth]{sgd_vs_adam_bce_train.png} \\ 
+\end{tabular}
+\caption{\label{fig:sgd_vs_adam} Loss of model trained with SGD vs ADAM}
+\end{figure}
