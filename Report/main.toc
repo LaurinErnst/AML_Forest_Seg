@@ -12,8 +12,9 @@
 \contentsline {subsection}{\numberline {3.3.3}Batch size}{5}{subsection.3.3.3}% 
 \contentsline {chapter}{\numberline {4}Training evaluation}{6}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Mean squared error loss}{6}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Stochastic gradient descent}{6}{subsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.1.2}ADAM}{8}{subsection.4.1.2}% 
+\contentsline {subsubsection}{Stochastic gradient descent}{6}{subsubsection*.4}% 
+\contentsline {subsubsection}{ADAM}{8}{subsubsection*.8}% 
 \contentsline {section}{\numberline {4.2}Cross entropy loss}{10}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Stochastic gradient descent}{10}{subsection.4.2.1}% 
-\contentsline {subsection}{\numberline {4.2.2}ADAM}{12}{subsection.4.2.2}% 
+\contentsline {subsubsection}{Stochastic gradient descent}{10}{subsubsection*.12}% 
+\contentsline {subsubsection}{ADAM}{12}{subsubsection*.16}% 
+\contentsline {section}{\numberline {4.3}SGD compared to ADAM}{15}{section.4.3}% 

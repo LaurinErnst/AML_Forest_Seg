@@ -1,5 +1,5 @@
 \section{Mean squared error loss}
-\subsection{Stochastic gradient descent}
+\subsubsection{Stochastic gradient descent}
 When training with stochastic gradient descent and mean 
 squared loss the loss always converged to around $0.28$ 
 with $0.263$ being our best loss.
@@ -84,7 +84,7 @@ As from epoch 10 onwards no real movement is seen.
 
 \newpage
 
-\subsection{ADAM}
+\subsubsection{ADAM}
 When training using ADAM as an optimizer, our training loss was always around $0.22$. 
 The best run had a final training loss of $0.2$. 
 
@@ -160,7 +160,7 @@ To conclude, training using MSE and Adam works well, after adjusting the learnin
 to a local minimum.
 
 \section{Cross entropy loss}
-\subsection{Stochastic gradient descent}
+\subsubsection{Stochastic gradient descent}
  For training using cross-entropy loss and stochastic gradient descent we got a final training loss
  of about $0.65$ in every run. With our best run converging to $0.6357$. 
 
@@ -235,14 +235,15 @@ change only slightly after 10 epochs and the test loss gets bigger than the trai
 
 \newpage
 
-\subsection{ADAM}
+\subsubsection{ADAM}
 
 As with MSE, the training loss is significantly when training with ADAM. We got an average training loss
 off around $0.51$ with our lowest run converging to $0.507$.
 
 This time the rate of change seems to be still quite high after 15 epochs. Maybe we should have used more 
 epochs in this case. Still the results seem to be consistent over all 6 runs we had no big outlier and rate of 
-change has already slowed down significantly after 12 eopchs.
+change has already slowed down significantly after 12 epochs.
+
 
 \begin{table}[!ht]
     \centering
@@ -267,3 +268,44 @@ change has already slowed down significantly after 12 eopchs.
     \end{tabular}
     \caption{\label{tab:bce_adam_train}Training loss of all 6 runs using BCE and ADAM}
 \end{table}
+
+Again the test loss seems to be approximately the same as the training loss. Interestingly in our best 
+training run,the test loss seems to be significantly worse than on average. This could mean, that we should 
+have used more epochs to train. 
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l||l||l||l||l||l||l|}
+    \hline
+    epoch & 1st Run & 2nd Run & 3rn Run & 4th Run & 5th Run & 6th Run \\ \hline
+        1 & 0.62222517 & 0.6304792 & 0.650266 & 0.64774585 & 0.6450115 & 0.6502997 \\ \hline
+        2 & 0.6127994 & 0.5911052 & 0.61116695 & 0.6112345 & 0.6006177 & 0.59954464 \\ \hline
+        3 & 0.56413865 & 0.5533587 & 0.5838492 & 0.57314724 & 0.5676928 & 0.6095978 \\ \hline
+        4 & 0.60099006 & 0.54774123 & 0.5802889 & 0.57163227 & 0.5549136 & 0.5582189 \\ \hline
+        5 & 0.54441684 & 0.56050503 & 0.5649236 & 0.5489276 & 0.5546435 & 0.550628 \\ \hline
+        6 & 0.5395218 & 0.5285362 & 0.55067337 & 0.54289705 & 0.5512127 & 0.53947175 \\ \hline
+        7 & 0.5361257 & 0.5262004 & 0.5480118 & 0.54036915 & 0.54933226 & 0.5381737 \\ \hline
+        8 & 0.53230333 & 0.5228678 & 0.54828644 & 0.53706986 & 0.5442867 & 0.53867507 \\ \hline
+        9 & 0.53142047 & 0.5205792 & 0.5409243 & 0.5374959 & 0.5430919 & 0.53440034 \\ \hline
+        10 & 0.5264803 & 0.5184883 & 0.53914946 & 0.52918005 & 0.5380025 & 0.5344262 \\ \hline
+        11 & 0.52641296 & 0.5179452 & 0.53895676 & 0.5291239 & 0.53749406 & 0.53313345 \\ \hline
+        12 & 0.5257408 & 0.51773334 & 0.5374101 & 0.5288156 & 0.5371681 & 0.53354484 \\ \hline
+        13 & 0.52537686 & 0.51755416 & 0.5376477 & 0.52927 & 0.53689975 & 0.5333335 \\ \hline
+        14 & 0.5251515 & 0.5186142 & 0.5370112 & 0.52886564 & 0.5365701 & 0.53299874 \\ \hline
+        15 & 0.5245699 & 0.51723737 & 0.5370193 & 0.5278556 & 0.5362334 & 0.5325686 \\ \hline
+    \end{tabular}
+    \caption{\label{tab:bce_adam_test}Test loss of all 6 runs using BCE and ADAM}
+\end{table}
+
+
+Finally taking a look at our best trainings run once more in figure \ref{im:best-BCE-ADAM-UNET} we can see that 
+there is a big difference between training and test loss after the 5th epoch. This phenomenon only occurred in this
+run. In all the other runs the test loss is much closer to the training loss. 
+
+
+\begin{figure}[h]
+    \includegraphics[scale = 0.75]{best-BCE-ADAM-UNET}
+    \caption{\label{im:best-BCE-ADAM-UNET} Loss over epochs for best fitted model}
+\end{figure}
+
+\newpage
