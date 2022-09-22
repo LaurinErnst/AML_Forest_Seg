@@ -6,7 +6,7 @@ import torch
 import gc
 
 
-class dataloader:
+class DataLoader:
     def __init__(self, set_size, train_size, batch_size, test_batch_size=100):
         self.set = np.arange(set_size)
         self.trainingset = []
@@ -97,11 +97,11 @@ class dataloader:
         f_mask = os.path.join(mask_directory, str(i) + ".jpg")
         im = Image.open(f_im)
         mask = Image.open(f_mask)
-        mask = mask.convert("L")
+        mask_data = mask.convert("L")
 
         # extract data into numpy array
         im_data = np.array(im.getdata()).T
-        mask_data = np.array(mask.getdata()).T
+        mask_data = np.array(mask_data.getdata()).T
 
         # get data into right shape and concat image data to final data array
         data_im = np.array([im_data.reshape(3, 256, 256)])

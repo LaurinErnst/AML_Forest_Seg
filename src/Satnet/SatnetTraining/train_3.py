@@ -29,7 +29,7 @@ H = {"train_loss": [], "test_loss": []}
 # ___________________loader setup_______________
 
 
-loader = dataloader.dataloader(
+loader = dataloader.DataLoader(
     gen_config.SET_SIZE,
     gen_config.TRAIN_SIZE,
     model_con.BATCH_SIZE,
