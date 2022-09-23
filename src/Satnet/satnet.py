@@ -34,7 +34,7 @@ class DoubleAdditionBlock(nn.Module):
 		super().__init__()
 		self.block1 = SatBlock(in_channel, out_channel, kernel_size1, stride)
 		self.block2 = SatBlock(in_channel, out_channel, kernel_size2,
-		                       stride, padding=(3,3))
+		                       stride, padding=(3, 3))
 		self.conv3 = nn.Conv2d(out_channel, out_channel, kernel_size3, 1, padding='same')
 		self.batchnorm3 = nn.BatchNorm2d(out_channel)
 		self.relu3 = nn.ReLU()
@@ -48,23 +48,11 @@ class DoubleAdditionBlock(nn.Module):
 class SatEncoder(nn.Module):
 	def __init__(self, p_dropout=0.5):
 		super().__init__()
-		blocks = []
-
-		blocks.append(SatBlock(3, 32, 7, 2))
-
-		blocks.append(AdditionBlock(32, 32, 3))
-		blocks.append(AdditionBlock(32, 32, 3))
-		blocks.append(AdditionBlock(32, 32, 3))
-
-		blocks.append(DoubleAdditionBlock(32, 64, 1, 7, 3, 2))
-
-		blocks.append(AdditionBlock(64, 64, 3))
-		blocks.append(AdditionBlock(64, 64, 3))
-		blocks.append(AdditionBlock(64, 64, 3))
-
-		blocks.append(nn.Dropout(p_dropout))
-
-		self.blocks = nn.ModuleList(blocks)
+		self.blocks = nn.ModuleList(
+			[SatBlock(3, 32, 7, 2), AdditionBlock(32, 32, 3), AdditionBlock(32, 32, 3), AdditionBlock(32, 32, 3),
+			 DoubleAdditionBlock(32, 64, 1, 7, 3, 2), AdditionBlock(64, 64, 3), AdditionBlock(64, 64, 3),
+			 AdditionBlock(64, 64, 3), nn.Dropout(p_dropout)]
+		)
 
 	def forward(self, x):
 		for block in self.blocks:
@@ -75,17 +63,10 @@ class SatEncoder(nn.Module):
 class SatDecoder(nn.Module):
 	def __init__(self):
 		super().__init__()
-
-		blocks = []
-
-		blocks.append(nn.ConvTranspose2d(64, 16, 16, stride=2, padding=(7,7)))
-		blocks.append(nn.BatchNorm2d(16))
-		blocks.append(nn.ReLU())
-
-		blocks.append(nn.ConvTranspose2d(16, 1, 16, stride=2, padding=(5,5)))
-		blocks.append(nn.Sigmoid())
-
-		self.blocks = nn.ModuleList(blocks)
+		self.blocks = nn.ModuleList(
+			[nn.ConvTranspose2d(64, 16, 16, stride=2, padding=(7, 7)), nn.BatchNorm2d(16), nn.ReLU(),
+			 nn.ConvTranspose2d(16, 1, 16, stride=2, padding=(5, 5)), nn.Sigmoid()]
+		)
 
 	def forward(self, x):
 		for block in self.blocks:

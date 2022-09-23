@@ -41,7 +41,9 @@ def test_model(model, n=5, jacaard=False):
 
 		if i % 100 == 0:
 			print(i / 5108)
-		y_hat = model(x)
+
+		with torch.no_grad():
+			y_hat = torch.sigmoid(model(x))
 
 		if jacaard:
 			losses.append(jaccard_index(y, y_hat))
@@ -64,4 +66,5 @@ class NetRecovery(pickle.Unpickler):
 
 with open("testmodel", "rb") as file:
 	m = NetRecovery(file).load()
+
 print(test_model(m, jacaard=True))
