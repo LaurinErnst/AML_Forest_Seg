@@ -1,10 +1,9 @@
-import os
 import time
 import torch
 from torch.optim.lr_scheduler import StepLR
 from tqdm import tqdm
 from data_handling import dataloader
-from Satnet import satnet as sn
+from Satnet import satnet
 from config import gen_config
 from config import UNET_MSE_ADAM_1 as model_con
 from data_handling import net_saver
@@ -12,7 +11,7 @@ from data_handling import graph_saver
 import gc
 
 
-Model = sn.SatNet()
+Model = satnet.SatNet()
 
 Model = Model.to(gen_config.DEVICE)
 lossFunc = model_con.LOSS_FUNC(**model_con.LOSS_PARAMS)
@@ -43,10 +42,7 @@ loader = dataloader.DataLoader(
 print("[INFO] training the network...")
 startTime = time.time()
 for e in tqdm(range(model_con.NUM_EPOCHS)):
-    print("_______")
-    print("epoch")
-    print(e)
-    print("______")
+
     Model.train()
     gc.collect()
     loader.start_new_epoch()
@@ -57,14 +53,14 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
 
     # loop over the training set
     while not loader.epoch_finished():
-        opt.zero_grad()
         x, y = loader.trainloader()
         x, y = x.to(gen_config.DEVICE), y.to(gen_config.DEVICE)
         # perform a forward pass and calculate the training loss
         pred = Model.forward(x)
-        loss = lossFunc(pred, y.detach())
+        loss = lossFunc(pred, y)
         # first, zero out any previously accumulated gradients, then
         # perform backpropagation, and then update model parameters
+        opt.zero_grad()
         loss.backward()
         opt.step()
         # add the loss to the total training loss so far
@@ -75,29 +71,25 @@ for e in tqdm(range(model_con.NUM_EPOCHS)):
         y = y.cpu()
 
         gc.collect()
-        torch.cuda.empty_cache()
-        del x, y
 
-    # set the model in evaluation mode
-    Model.eval()
-    # loop over the validation set
-    while not loader.testdata_loaded():
-        x, y = loader.testloader()
-        # send the input to the device
-        x, y = x.to(gen_config.DEVICE), y.to(gen_config.DEVICE)
-        # make the predictions and calculate the validation loss
-        # switch off autograd
-        with torch.no_grad():
+    # switch off autograd
+    with torch.no_grad():
+        # set the model in evaluation mode
+        Model.eval()
+        # loop over the validation set
+        while not loader.testdata_loaded():
+            x, y = loader.testloader()
+            # send the input to the device
+            x, y = x.to(gen_config.DEVICE), y.to(gen_config.DEVICE)
+            # make the predictions and calculate the validation loss
             pred = Model.forward(x)
             totalTestLoss += lossFunc(pred, y)
             print(lossFunc(pred, y))
 
-        x = x.cpu()
-        y = y.cpu()
+            x = x.cpu()
+            y = y.cpu()
 
-        gc.collect()
-        torch.cuda.empty_cache()
-        del x, y
+            gc.collect()
 
     scheduler.step()
     # calculate the average training and validation loss
@@ -116,7 +108,9 @@ print("[INFO] total time taken to train the model: {:.2f}s".format(endTime - sta
 net_saver.save_model(Model, model_con.NAME)
 
 graph_saver.graph_saver(
-    H["train_loss"], model_con.NAME, title="Training Loss per Epoch"
+    H["train_loss"], "train_" + model_con.NAME, title="Training Loss per Epoch"
 )
 
-graph_saver.graph_saver(H["test_loss"], model_con.NAME, title="Test Loss per Epoch")
+graph_saver.graph_saver(
+    H["test_loss"], "test_" + model_con.NAME, title="Test Loss per Epoch"
+)

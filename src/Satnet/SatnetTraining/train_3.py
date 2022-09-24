@@ -3,15 +3,15 @@ import torch
 from torch.optim.lr_scheduler import StepLR
 from tqdm import tqdm
 from data_handling import dataloader
-from Satnet import satnet as sn
+from Satnet import satnet
 from config import gen_config
-from config import UNET_BCE_SGD_1 as model_con
+from config import UNET_MSE_ADAM_1 as model_con
 from data_handling import net_saver
 from data_handling import graph_saver
 import gc
 
 
-Model = sn.SatNet()
+Model = satnet.SatNet()
 
 Model = Model.to(gen_config.DEVICE)
 lossFunc = model_con.LOSS_FUNC(**model_con.LOSS_PARAMS)
@@ -108,7 +108,9 @@ print("[INFO] total time taken to train the model: {:.2f}s".format(endTime - sta
 net_saver.save_model(Model, model_con.NAME)
 
 graph_saver.graph_saver(
-    H["train_loss"], model_con.NAME, title="Training Loss per Epoch"
+    H["train_loss"], "train_" + model_con.NAME, title="Training Loss per Epoch"
 )
 
-graph_saver.graph_saver(H["test_loss"], model_con.NAME, title="Test Loss per Epoch")
+graph_saver.graph_saver(
+    H["test_loss"], "test_" + model_con.NAME, title="Test Loss per Epoch"
+)
