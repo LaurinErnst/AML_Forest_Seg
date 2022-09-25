@@ -18,6 +18,13 @@
 \allowdisplaybreaks
 \graphicspath{ {./images/} }
 
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+
 
 \usepackage{listings}
 \usepackage{xcolor}
@@ -166,6 +173,7 @@
 
 
 
+\addbibresource{authors.bib}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -190,6 +198,7 @@ x
 \chapter{Data Preprocessing}
 \input{chapters/data_prep}
 \chapter{Naive Segmentator + Jaccard?}
+\input{chapters/jaccard}
 \chapter{Unet Training}
 \input{chapters/unet_training}
 \chapter{Training Evaluation}
@@ -201,6 +210,9 @@ x
 \chapter{Critical Input}
 
 \chapter{Outlook}
+\input{chapters/outlook}
+
+% \printbibliography
 % \bibliography{authors}{}
 % \bibliographystyle{plain}
 

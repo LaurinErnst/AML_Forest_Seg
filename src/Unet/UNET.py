@@ -30,8 +30,6 @@ class Encoder(nn.Module):
             x = block(x)
             ftrs.append(x)
             x = self.pool(x)
-            print(len(ftrs))
-            print(x.shape)
 
         return ftrs
 

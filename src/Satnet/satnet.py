@@ -57,7 +57,6 @@ class SatEncoder(nn.Module):
 	def forward(self, x):
 		for block in self.blocks:
 			x = block(x)
-		print(x.shape)
 		return x
 
 

@@ -7,6 +7,14 @@ import torch
 import io
 
 
+class NetRecovery(pickle.Unpickler):
+	def find_class(self, module, name):
+		if module == 'torch.storage' and name == '_load_from_bytes':
+			return lambda b: torch.load(io.BytesIO(b), map_location='cpu')
+		else:
+			return super().find_class(module, name)
+
+
 def percentage_right(x, y):
 	x = x.flatten()
 	y = y.flatten()
@@ -40,7 +48,8 @@ def test_model(model, n=5, jaccard=False):
 		gc.collect()
 
 		if i % 100 == 0:
-			print(i / 5108)
+			# print(i / 5108)
+			pass
 		with torch.no_grad():
 			y_hat = torch.sigmoid(model(x))
 
@@ -52,19 +61,19 @@ def test_model(model, n=5, jaccard=False):
 	sorted_indices = np.argsort(losses)
 	worst = sorted_indices[:n]
 	best = np.flip(sorted_indices[-n:])
-	return losses, np.average(losses), worst, best
+	okay = sorted_indices[(int(len(sorted_indices) / 2) - int(n / 2)):(int(len(sorted_indices) / 2) + int(n / 2))]
+	return losses, np.average(losses), worst, okay, best
 
 
-class NetRecovery(pickle.Unpickler):
-	def find_class(self, module, name):
-		if module == 'torch.storage' and name == '_load_from_bytes':
-			return lambda b: torch.load(io.BytesIO(b), map_location='cpu')
-		else:
-			return super().find_class(module, name)
+netnames = ["UNET_BCE_ADAM_1", "UNET_BCE_SGD_1", "UNET_MSE_ADAM_1", "UNET_MSE_SGD_1"]
+for net in netnames:
+	with open("results_run_2/results5/trained_models/" + net, "rb") as file:
+		m = NetRecovery(file).load()
 
+	data = test_model(m, jaccard=True)
 
-with open("testmodel", "rb") as file:
-	m = NetRecovery(file).load()
+	print(net)
+	print(data[1:])
 
-print(test_model(m, jaccard=True))
-
+	with open("training_eval/data/" + net + ".pt", "wb") as file:
+		pickle.dump(data, file)
