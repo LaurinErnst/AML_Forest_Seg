@@ -6,7 +6,7 @@ from PIL import Image
 import os
 import torch
 
-def naive_seg(i):
+def naive_seg(i,thresholdstd=3.2,thresholdbright=120,thresholdcol=-20):
     #load images in color and in grayscale
     image = np.array(Image.open(os.path.join("../data/images/",str(i)+".jpg")))
     img_gray = np.array(Image.open("../data/images/"+str(i)+".jpg").convert("L"))
@@ -37,7 +37,7 @@ def naive_seg(i):
         std=np.std(single_segment)
 
         #conditions for forest classification
-        if std>3.2  and brightness<120 and diff>-20:
+        if std>thresholdstd  and brightness<thresholdbright and diff>-thresholdcol:
             mask[bool_array]=255
     mask=torch.tensor(np.reshape(np.uint8(mask),(1,256,256)))
     return mask
