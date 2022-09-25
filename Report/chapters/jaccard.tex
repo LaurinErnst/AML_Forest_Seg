@@ -1,0 +1,50 @@
+\section{Introduction Jaccard Index}
+\section{Expected Jaccard Index of a Random Segmentator}
+As mentioned before, the Jaccard index is defined by
+
+\begin{equation}
+  J(A, B) := \frac{|A \cap B|}{|A \cup B|}
+\end{equation}
+
+which can be rewritten as
+
+\begin{equation}
+  J(A, B) = \frac{|A \cap B|}{|A| + |B \setminus A |}
+\end{equation}
+
+In our case, $A$ is the set of pixels, which are forest, and $B$ is the set of pixels, our segmentator classified as forest. To get a better feeling of the Jaccard index, we wanted to calculate the expected index a simple random segmentator gives to compare it to our models. This random segmentator would just assign a $1$ or $0$ with probability $\frac{1}{2}$ to each pixel, where $1$ means forest and $0$ means no forest. Of course, this segmentator does not perform well, but it gives a benchmark for comparison.
+
+Now, let us look at the problem mathematically. Take a arbitrary but fixed satellite image with its mask and define $n$ as the number of pixels it has (for us, that is $256^2$ in every image). Define $m$ as the number of pixels which are forest (meaning they have value 1 in the mask). Obviously, this number is not fixed throughout the images we have, but it is a deterministic constant for every single image.
+
+To define the random segmentator, we define $n$ random variables $X_1, \dots, X_n$ that assign each pixel 0 or 1 with probability $\frac{1}{2}$. Thus,they also have a probability of $\frac{1}{2}$ of assigning the right value for the pixel. Also, each $X_i$ is stochastically independent from the others. This lets us conclude that
+\begin{equation}
+  X_1, \dots, X_n \overset{\mathrm{iid}}{\sim} \text{Bin}(1, \frac{1}{2})
+\end{equation}
+where the binomial distribution stands for $X_i$ assigning \textbf{the right value or not} instead of 1 meaning forest and 0 meaning no forest.
+
+If we apply this to the Jaccard index, we first have to look at our sets $A$ and $B$. $A$ is a deterministic set, because the forest pixels in a single image are fixed. This also means that $|A|=m$ per definition. On the other hand, $B$ is the random set of pixels, our segmentator classified as forest. $A \cap B$ is the subset of pixels classified as forest, which truly are forest. Thus,
+
+\begin{equation}
+  Y:= |A \cap B| = \sum_{i \in A} X_i
+\end{equation}
+and because the $X_i$ are i.i.d. and $|A|=m$ we conclude that $Y\sim \text{Bin}(m, \frac{1}{2})$. For $A\setminus B$, we can proceed similarly:
+\begin{equation}
+  Z:= |A\setminus B| = \sum_{i \notin A} X_i
+\end{equation}
+and because the $X_i$ are i.i.d. and $|A|=m$ we conclude that $Z\sim \text{Bin}\left (n-m, \frac{1}{2} \right)$. Since $Y$ and $Z$ are independent by definition, we can write
+\begin{align*}
+  \IE\left(J(A,B)\right) = \ & \IE \left(\frac{Y}{m+Z} \right) \\
+   = \ & \IE(Y) \cdot \IE \left(\frac{1}{m+Z} \right)
+\end{align*}
+
+With Taylor's theorem, we can approximate
+\begin{equation}
+  \IE \left(\frac{1}{m+Z}\right) \approx \frac{1}{m+\IE Z}
+\end{equation}
+
+and so
+\begin{equation}
+  \IE(J(A,B)) = \frac{\frac{m}{2}}{m + \frac{n-m}{2}} = \frac{m}{m+n}
+\end{equation}
+
+$n$ is a constant throughout the dataset, but $m$ differs for every image. The average of the dataset is $m=40900$, so we can say that our models perform better than guessing if their average Jaccard index is greater than $J = 0.39$ (confirmed by random simulations). We could try to improve the random segmentator by adjusting the guess rate according to the proportion of forest in the dataset, but experiments show that this does not make a big difference in performance.

@@ -2,6 +2,8 @@ import pickle
 import torch
 import io
 
+from PIL import ImageFilter
+
 import torchvision.transforms as t
 from NaiveSegmentation.naivesegmentation import naive_seg
 from data_handling.dataloader import load_one
@@ -22,8 +24,13 @@ def convert_mask_to_transparent(mask):
 			if pixels[i, j][0] == 0:
 				pixels[i, j] = (0, 0, 0, 0)
 			else:
-				pixels[i, j] = (212, 49, 49, 80)
+				pixels[i, j] = (212, 49, 49, 65)
 	return mask
+
+
+def overlap_without_model(i):
+	img, mask = load_one(i)
+	return create_overlap(img[0], mask[0])
 
 
 def create_overlap(background, overlap):
@@ -34,7 +41,6 @@ def create_overlap(background, overlap):
 	overlap = convert_mask_to_transparent(overlap)
 
 	background.paste(overlap, (0, 0), overlap)
-	background.show()
 
 	return background
 
@@ -47,15 +53,25 @@ def create_masks(model, indices):
 		y = model(img)
 
 		real_overlap = create_overlap(img[0], mask[0])
+		true_vs_calc = create_overlap(mask[0], y[0])
 		calc_overlap = create_overlap(img[0], y[0])
 
-		images.append((i, real_overlap, calc_overlap))
+		images.append((i, real_overlap, calc_overlap, true_vs_calc))
 
 	return images
 
 
-with open("testmodel", "rb") as file:
+with open("training_eval/testmodel", "rb") as file:
 	m = NetRecovery(file).load()
-create_masks(m, [4068,187,2709,2703,1247])
 
+# overlap_without_model(10).save("training_eval/masks/" + str(10) + "_overlap.png")
+# """
+images = create_masks(m, [4751, 2828, 2833, 2834, 1930,  # worst
+                          3171, 943, 1665, 3492,  # okay
+                          3675, 2559, 7, 4189, 121])  # best
 
+for i, image in enumerate(images):
+	image[1].save("training_eval/masks/" + str(i) + "_1.png")
+	image[2].save("training_eval/masks/" + str(i) + "_2.png")
+	image[3].save("training_eval/masks/" + str(i) + "_3.png")
+# """

@@ -1,0 +1,47 @@
+After implementing the U-Net, we wanted to try a slightly different approach of using convolutional networks, so we researched other methods used in satellite image analysis and found a paper (see \textbf{\color{red} zitieren}) segmentating satellite images using a so called "SatNet". They used the SatNet to identify roads and buildings on satellite images, which is not too far from our task, so we used the structure they provided in the paper (\ref{satnet_structure}). \\
+
+\section{Introduction to SatNet}
+\begin{figure}
+  \begin{center}
+  \label{satnet_structure}
+  \includegraphics[width=.7\linewidth]{images/satnet_structure}
+  \caption{Structure of the SatNet, taken from \textbf{\color{red} Satnetzitieren}}
+  \end{center}
+\end{figure}
+
+As explained in \textbf{\color{red}zitieren}, the SatNet is heavily inspired by the ResNet, because in the SatNet there are few connections which do not add the input to the convoluted output. First of all, this reduces the risk of vanishing gradients, because no matter the learned function, the identity still provides a large gradient for the top layers. Second, the skip connections allow the SatNet to be much deeper and have much more layers than other ConvNets, because it is very easy for the layers to learn the identity function and thus, these layers can extract information only if necessary.
+
+From an overall structure, the SatNet still encodes and then decodes the images, similarly to the U-Net. The big difference here is that the SatNet downsamples the images by striding instead of pooling. In our structure, we have two convolution layers with a stride parameter of two, the others all keep the dimension constant. After the encoding, the SatNet quickly upsamples the codes with two transposed convolutions also using a stride parameter of two. The advantage of downsampling with stride is its efficiency in computation, because such a layer downsamples and convolutes the data at the same time and with less parameters.
+
+The SatNet is designed such that after every downsampling there are a lot of convolution layers without reducing the dimension. This allows the network to "adjust" to the loss of information and gives it time to finely extract all information from the new downsampled data before downsampling it again. Overall, SatNet does not reduce the data as far as the U-Net does, because the lowest dimension SatNet reaches is a 63x63 grid as opposed to the 28x28 grid of the U-Net. However, the SatNet keeps the number of channels used low, increasing the number only when downsampling, contrary to what the U-Net does. So the best way to describe the approach of the SatNet is that it takes few features (channels) and refines those in an optimal way to keep all important information, whereas the U-Net uses a lot of channels to keep as much information as possible.
+
+Looking at the details, ReLU is applied to the output of every convolution layer to keep the inputs positive. The exception is the last layer where a sigmoid function is applied to give a result between $0$ and $1$, providing a probability of a pixel being forest. Obviously, the last layer only needs one channel for segmentation.
+
+To improve training, a batch normalisation is performed after every convolution to keep the values centered and numerically stable. Furthermore, there is one dropout layer at the end of the encoder, which is enough to prevent overfitting, because this is where the information loss by dropping a neuron is the highest due to the information being most dense in the encoded data.
+
+To summarise, we expect the SatNet to be faster in training, because it has significantly less channels and thus trainable parameters than the U-Net: The U-Net we trained has approximately 1.8 million parameters whereas the SatNet only has around 700k. Thus, the performance ceiling of the SatNet is expected to be lower than the U-Net's but maybe it can achieve better results in less time. \\
+
+\section{Training}
+basically the same as unet (losses and algorithms). as mentioned before, less parameters means faster training but ofc potentially worse results\\
+\section{Results}
+bad on img with little to no forest\\
+\section{Faulty Data}
+When evaluating the training of our models, we looked at the data on which our model performed the worst.
+
+One thing that became noticable when looking at the data our models performed worst on was the lacking quality of some of the training data.
+\begin{figure}
+  \begin{center}
+  \label{badimg}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/1_mask}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/1_imag}
+  \caption{Faulty Data}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+  \label{badimg2}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/10_overlap}
+  \caption{Faulty Data}
+  \end{center}
+\end{figure}
