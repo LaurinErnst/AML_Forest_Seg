@@ -1,20 +1,26 @@
-\babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
-\contentsline {chapter}{\numberline {2}Data Preprocessing}{2}{chapter.2}% 
-\contentsline {chapter}{\numberline {3}Unet training}{3}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Overall training procedure}{3}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Choice of Loss functions and optimizers}{3}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Training hyperparameter's}{4}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}Loss functions}{4}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}Optimizer parameters}{4}{subsection.3.3.2}% 
-\contentsline {subsubsection}{Stochastic gradient descent}{4}{subsubsection*.2}% 
-\contentsline {subsubsection}{ADAM}{4}{subsubsection*.3}% 
-\contentsline {subsection}{\numberline {3.3.3}Batch size}{5}{subsection.3.3.3}% 
-\contentsline {chapter}{\numberline {4}Training evaluation}{6}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Mean squared error loss}{6}{section.4.1}% 
-\contentsline {subsubsection}{Stochastic gradient descent}{6}{subsubsection*.4}% 
-\contentsline {subsubsection}{ADAM}{8}{subsubsection*.8}% 
-\contentsline {section}{\numberline {4.2}Cross entropy loss}{10}{section.4.2}% 
-\contentsline {subsubsection}{Stochastic gradient descent}{10}{subsubsection*.12}% 
-\contentsline {subsubsection}{ADAM}{12}{subsubsection*.16}% 
-\contentsline {section}{\numberline {4.3}SGD compared to ADAM}{15}{section.4.3}% 
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Data Preprocessing}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Naive Segmentator + Jaccard?}{3}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Unet Training}{4}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Overall training procedure}{4}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Choice of Loss functions and optimizers}{4}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Training hyperparameter's}{5}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Loss functions}{5}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Optimizer parameters}{5}{subsection.4.3.2}%
+\contentsline {subsubsection}{Stochastic gradient descent}{5}{subsubsection*.2}%
+\contentsline {subsubsection}{ADAM}{5}{subsubsection*.3}%
+\contentsline {subsection}{\numberline {4.3.3}Batch size}{6}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}Training Evaluation}{7}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Mean squared error loss}{7}{section.5.1}%
+\contentsline {subsubsection}{Stochastic gradient descent}{7}{subsubsection*.4}%
+\contentsline {subsubsection}{ADAM}{9}{subsubsection*.8}%
+\contentsline {section}{\numberline {5.2}Cross entropy loss}{11}{section.5.2}%
+\contentsline {subsubsection}{Stochastic gradient descent}{11}{subsubsection*.12}%
+\contentsline {subsubsection}{ADAM}{13}{subsubsection*.16}%
+\contentsline {section}{\numberline {5.3}SGD compared to ADAM}{16}{section.5.3}%
+\contentsline {chapter}{\numberline {6}SatNet}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction to SatNet}{17}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Training}{18}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Critical Input}{19}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Outlook}{20}{chapter.8}%

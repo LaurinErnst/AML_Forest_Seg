@@ -1,0 +1,16 @@
+\section{Introduction to SatNet}
+
+\begin{center}
+\includegraphics[width=.7\linewidth]{images/satnet_structure}
+\end{center}
+inspired by resnet
+structure: downsampling (through stride, not pooling!), then a lot of fine tuning -> always add old layer to not deviate too much. batchnorm to improve gradient descent. keep channel size constant. relu for positive activations. after 6 convs, more downsampling, but also more channels
+repeat convolution to finetune new channels. dropout layer after encoding, to reduce overfitting (one dropout is enough, because it is at the most critical, information dense part).
+after that, quickly reduce channels to 16 and then 1 (output channel) and revert the downsampling by transposed convolution (better than upsanpling because learnable)
+
+downsampling with stride means less computation, because conv and downsampling at the same time
+
+advantage Satnet: less downsampling and less information lost (SatNet reduces to 63 sq pixels, unet to 28) but less channels (satnet 64, unet 256) in encoder features. less channels leads to less parameters (unet ~1.9 mil, satnet ~700k) -> faster training expected. maybe the endless conv layers will fine tune the encoder features so that they can convey all necessary information
+
+\section{Training}
+basically the same as unet (losses and algorithms). as mentioned before, less parameters means faster training but ofc potentially worse results
