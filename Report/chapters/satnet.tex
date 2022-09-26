@@ -22,18 +22,23 @@ To improve training, a batch normalisation is performed after every convolution 
 To summarise, we expect the SatNet to be faster in training, because it has significantly less channels and thus trainable parameters than the U-Net: The U-Net we trained has approximately 1.8 million parameters whereas the SatNet only has around 700k. Thus, the performance ceiling of the SatNet is expected to be lower than the U-Net's but maybe it can achieve better results in less time. \\
 
 \section{Training}
+The training algorith for the SatNet does not differ from the one we used for the U-Net; we had to different optimisers, namely the ADAM algorithm and the classical SGD and tried the BCE loss as well as the MSE loss. One training parameter which we do not have in the U-Net training is the dropout probability of the dropout layer in the SatNet, however, we did not experiment with it and left it at the standard $p_{drop}=0.5$.
+
 basically the same as unet (losses and algorithms). as mentioned before, less parameters means faster training but ofc potentially worse results\\
 \section{Results}
 bad on img with little to no forest\\
-\section{Faulty Data}
-When evaluating the training of our models, we looked at the data on which our model performed the worst.
+\section{Problems with the Dataset}
+When evaluating the training of our models, we looked at the data on which our model performed the worst. One thing that became noticable was the lacking quality of some of the training data as well as some controversial masking.
 
-One thing that became noticable when looking at the data our models performed worst on was the lacking quality of some of the training data.
+For example, in \ref{badimg} we can see a satellite image on the left and its given mask on the right; remember that black means no forest. In the image there is one big strip of forest in th south, but the whole image is classified as no forest. This is only one example of images where large chunks of forest are not classified as forest and so make it harder for our neural networks to properly train on the data.
+
+Some data also classifies large chunks of just ground without any trees as forest. Depending on the size of those chunks, one could argue that it is just a clearing in the forest and thus qualifies as part of the forest. But the more often this appears, the harder it becomes for the networks to tell a clearing in the forest and just a plain field apart. An example of this can be seen in \ref{badimg2}, where the reddish part is what is classified as forest and the only non forest pixels are a small part in the upper right part of the image.
+
 \begin{figure}
   \begin{center}
   \label{badimg}
-  \includegraphics[width=.4\linewidth]{images/satellite_images/1_mask}
   \includegraphics[width=.4\linewidth]{images/satellite_images/1_imag}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/1_mask}
   \caption{Faulty Data}
   \end{center}
 \end{figure}
@@ -42,6 +47,6 @@ One thing that became noticable when looking at the data our models performed wo
   \begin{center}
   \label{badimg2}
   \includegraphics[width=.4\linewidth]{images/satellite_images/10_overlap}
-  \caption{Faulty Data}
+  \caption{Controversial Data: The }
   \end{center}
 \end{figure}
