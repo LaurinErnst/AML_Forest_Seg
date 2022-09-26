@@ -1,29 +1,30 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Data Preprocessing}{2}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Naive Segmentator + Jaccard?}{3}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction Jaccard Index}{3}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Expected Jaccard Index of a Random Segmentator}{3}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Unet Training}{5}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Overall training procedure}{5}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Choice of Loss functions and optimizers}{5}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Training hyperparameter's}{6}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Loss functions}{6}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Optimizer parameters}{6}{subsection.4.3.2}%
-\contentsline {subsubsection}{Stochastic gradient descent}{6}{subsubsection*.2}%
-\contentsline {subsubsection}{ADAM}{6}{subsubsection*.3}%
-\contentsline {subsection}{\numberline {4.3.3}Batch size}{7}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Training Evaluation}{8}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Mean squared error loss}{8}{section.5.1}%
+\contentsline {chapter}{\numberline {2}Dataset}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Data Preprocessing}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Problems with the Dataset}{3}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Naive Segmentator + Jaccard?}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction Jaccard Index}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Expected Jaccard Index of a Random Segmentator}{5}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Unet Training}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Overall training procedure}{7}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Choice of Loss functions and optimizers}{7}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Training hyperparameter's}{8}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Loss functions}{8}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Optimizer parameters}{8}{subsection.4.3.2}%
 \contentsline {subsubsection}{Stochastic gradient descent}{8}{subsubsection*.4}%
-\contentsline {subsubsection}{ADAM}{10}{subsubsection*.8}%
-\contentsline {section}{\numberline {5.2}Cross entropy loss}{12}{section.5.2}%
-\contentsline {subsubsection}{Stochastic gradient descent}{12}{subsubsection*.12}%
-\contentsline {subsubsection}{ADAM}{14}{subsubsection*.16}%
-\contentsline {section}{\numberline {5.3}SGD compared to ADAM}{17}{section.5.3}%
-\contentsline {chapter}{\numberline {6}SatNet}{18}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introduction to SatNet}{18}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Training}{20}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Results}{20}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Problems with the Dataset}{21}{section.6.4}%
+\contentsline {subsubsection}{ADAM}{8}{subsubsection*.5}%
+\contentsline {subsection}{\numberline {4.3.3}Batch size}{9}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}Training Evaluation}{10}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Mean squared error loss}{10}{section.5.1}%
+\contentsline {subsubsection}{Stochastic gradient descent}{10}{subsubsection*.6}%
+\contentsline {subsubsection}{ADAM}{12}{subsubsection*.10}%
+\contentsline {section}{\numberline {5.2}Cross entropy loss}{14}{section.5.2}%
+\contentsline {subsubsection}{Stochastic gradient descent}{14}{subsubsection*.14}%
+\contentsline {subsubsection}{ADAM}{16}{subsubsection*.18}%
+\contentsline {section}{\numberline {5.3}SGD compared to ADAM}{19}{section.5.3}%
+\contentsline {chapter}{\numberline {6}SatNet}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction to SatNet}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Training}{22}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Results}{22}{section.6.3}%
 \contentsline {chapter}{\numberline {7}Outlook}{23}{chapter.7}%
