@@ -1,60 +1,60 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Data Preprocessing}{2}{chapter.2}% 
+\contentsline {chapter}{\numberline {2}Data Preprocessing}{2}{chapter.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Naive Segmentator + Jaccard?}{3}{chapter.3}% 
+\contentsline {chapter}{\numberline {3}Naive Segmentator + Jaccard?}{3}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Introduction Jaccard Index}{3}{section.3.1}% 
+\contentsline {section}{\numberline {3.1}Performance measures}{3}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Expected Jaccard Index of a Random Segmentator}{3}{section.3.2}% 
+\contentsline {section}{\numberline {3.2}Expected Jaccard Index of a Random Segmentator}{4}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Unet Training}{5}{chapter.4}% 
+\contentsline {section}{\numberline {3.3}Segmentation without Neural Networks}{5}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Overall training procedure}{5}{section.4.1}% 
+\contentsline {chapter}{\numberline {4}Unet}{8}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Choice of Loss functions and optimizers}{5}{section.4.2}% 
+\contentsline {section}{\numberline {4.1}Overall training procedure}{8}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Training hyperparameter's}{6}{section.4.3}% 
+\contentsline {section}{\numberline {4.2}Choice of Loss functions and optimizers}{8}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Loss functions}{6}{subsection.4.3.1}% 
+\contentsline {section}{\numberline {4.3}Training hyperparameter's}{9}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Optimizer parameters}{6}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.1}Loss functions}{9}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Stochastic gradient descent}{6}{subsubsection*.2}% 
+\contentsline {subsection}{\numberline {4.3.2}Optimizer parameters}{9}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{ADAM}{6}{subsubsection*.3}% 
+\contentsline {subsubsection}{Stochastic gradient descent}{9}{subsubsection*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Batch size}{7}{subsection.4.3.3}% 
+\contentsline {subsubsection}{ADAM}{9}{subsubsection*.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Training Evaluation}{8}{chapter.5}% 
+\contentsline {subsection}{\numberline {4.3.3}Batch size}{10}{subsection.4.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Mean squared error loss}{8}{section.5.1}% 
+\contentsline {section}{\numberline {4.4}Mean squared error loss}{10}{section.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Stochastic gradient descent}{8}{subsubsection*.4}% 
+\contentsline {subsubsection}{Stochastic gradient descent}{10}{subsubsection*.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{ADAM}{10}{subsubsection*.8}% 
+\contentsline {subsubsection}{ADAM}{11}{subsubsection*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Cross entropy loss}{12}{section.5.2}% 
+\contentsline {section}{\numberline {4.5}Cross entropy loss}{13}{section.4.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Stochastic gradient descent}{12}{subsubsection*.12}% 
+\contentsline {subsubsection}{Stochastic gradient descent}{13}{subsubsection*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{ADAM}{14}{subsubsection*.16}% 
+\contentsline {subsubsection}{ADAM}{15}{subsubsection*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}SGD compared to ADAM}{17}{section.5.3}% 
+\contentsline {section}{\numberline {4.6}SGD compared to ADAM}{19}{section.4.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}SatNet}{18}{chapter.6}% 
+\contentsline {chapter}{\numberline {5}SatNet}{20}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Introduction to SatNet}{18}{section.6.1}% 
+\contentsline {section}{\numberline {5.1}Introduction to SatNet}{20}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Training}{20}{section.6.2}% 
+\contentsline {section}{\numberline {5.2}Training}{22}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Results}{20}{section.6.3}% 
+\contentsline {section}{\numberline {5.3}Results}{22}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Faulty Data}{20}{section.6.4}% 
+\contentsline {section}{\numberline {5.4}Faulty Data}{22}{section.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Critical Input}{22}{chapter.7}% 
+\contentsline {chapter}{\numberline {6}Critical Input}{24}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Outlook}{23}{chapter.8}% 
+\contentsline {chapter}{\numberline {7}Outlook}{25}{chapter.7}%
