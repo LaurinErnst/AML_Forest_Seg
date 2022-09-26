@@ -1,43 +1,68 @@
-The dataset from Kaggle of 5108 arial forest images and its mask 
-respectively. The where all already formatted to 256 x 256 pixel. 
-Furthermore the images looked clean, hence we did not need to do 
+\section{Data Preprocessing}
+The dataset from Kaggle of 5108 arial forest images and its mask
+respectively. The where all already formatted to 256 x 256 pixel.
+Furthermore the images looked clean, hence we did not need to do
 a lot of cleaning of the data.
 
-Each image was saved in the jpg format meaning our 
-dataset had a size of approximately 185 MB. 
-Our first intuition was that, since jpg is a 
-compressed file format, loading jpgs could take longer 
-than loading from uncompressed files. Thus we tried saving our 
-data first as json and second in pythons pickle dataformat. 
-Both times this lead to a massively inflated dataset of 
+Each image was saved in the jpg format meaning our
+dataset had a size of approximately 185 MB.
+Our first intuition was that, since jpg is a
+compressed file format, loading jpgs could take longer
+than loading from uncompressed files. Thus we tried saving our
+data first as json and second in pythons pickle dataformat.
+Both times this lead to a massively inflated dataset of
 around 5 GB in size.
 
-When timing dataloading, loading jpgs using pythons 
-Python Image Library was actually faster than loading jsons 
+When timing dataloading, loading jpgs using pythons
+Python Image Library was actually faster than loading jsons
 using pandas. Hence we load our data from jpegs.
 
-A big part of our work is our custom dataloader. 
-It arose from our need for a lot of customizability as it not 
+A big part of our work is our custom dataloader.
+It arose from our need for a lot of customizability as it not
 only loads data from our custom source but also formats our masks.
- Every mask consists of white pixels with value 255 and black 
- pixels with value 0. Trying to make our loss easier to interpret 
+ Every mask consists of white pixels with value 255 and black
+ pixels with value 0. Trying to make our loss easier to interpret
  we decided to set each white pixel to 1.
-In the end our dataloader works similar to a standard dataloader 
-from pytorch for example. 
-On initialization you set the size of the Dataset you want to 
-use, the set of the trainings set, the batch size you want and 
-optionally the batch set for the test set 
-(we used this as we tried our program on different machines thus for 
-more efficiency it was important to be able to control the batch size 
+In the end our dataloader works similar to a standard dataloader
+from pytorch for example.
+On initialization you set the size of the Dataset you want to
+use, the set of the trainings set, the batch size you want and
+optionally the batch set for the test set
+(we used this as we tried our program on different machines thus for
+more efficiency it was important to be able to control the batch size
 for the test set).
 
-The batch loading itself is done by the function batchloader. 
-On each new epoch the trainingset is shuffled randomly using numpys 
+The batch loading itself is done by the function batchloader.
+On each new epoch the trainingset is shuffled randomly using numpys
 shuffle function. The epoch\_ finished function is used to check wether
- the dataset has been completely stepped through and if therefore a new 
+ the dataset has been completely stepped through and if therefore a new
  epoch has to be started.
 
-Our image data is returned as pytorch tensors respectively containing 
+Our image data is returned as pytorch tensors respectively containing
 three arrays for every image one for red one for green and one for blue.
  Our mask data is returned as a pytorch tensor consisting of only one
   array per mask containing of zeros and ones.
+
+  \section{Problems with the Dataset}
+  When evaluating the training of our models, we looked at the data on which our model performed the worst. One thing that became noticable was the lacking quality of some of the training data as well as some controversial masking.
+
+  For example, in \ref{badimg} we can see a satellite image on the left and its given mask on the right; remember that black means no forest. In the image there is one big strip of forest in th south, but the whole image is classified as no forest. This is only one example of images where large chunks of forest are not classified as forest and so make it harder for our neural networks to properly train on the data.
+
+  Some data also classifies large chunks of just ground without any trees as forest. Depending on the size of those chunks, one could argue that it is just a clearing in the forest and thus qualifies as part of the forest. But the more often this appears, the harder it becomes for the networks to tell a clearing in the forest and just a plain field apart. An example of this can be seen in \ref{badimg2}, where the reddish part is what is classified as forest and the only non forest pixels are a small part in the upper right part of the image.
+
+  \begin{figure}
+    \begin{center}
+    \label{badimg}
+    \includegraphics[width=.4\linewidth]{images/satellite_images/1_imag}
+    \includegraphics[width=.4\linewidth]{images/satellite_images/1_mask}
+    \caption{Faulty Data}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}
+    \begin{center}
+    \label{badimg2}
+    \includegraphics[width=.4\linewidth]{images/satellite_images/10_overlap}
+    \caption{Controversial Data: The }
+    \end{center}
+  \end{figure}

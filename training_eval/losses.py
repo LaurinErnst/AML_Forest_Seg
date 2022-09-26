@@ -1,4 +1,5 @@
 import gc
+import os
 
 import numpy as np
 from data_handling.dataloader import load_one
@@ -65,18 +66,22 @@ def test_model(model, n=5, jaccard=False):
 	return losses, np.average(losses), worst, okay, best
 
 
-netnames = ["UNET_BCE_ADAM_1", "UNET_BCE_SGD_1", "UNET_MSE_ADAM_1", "UNET_MSE_SGD_1"]
-for net in netnames:
-	with open("results_run_2/results5/trained_models/" + net, "rb") as file:
-		m = NetRecovery(file).load()
+# netnames = ["UNET_BCE_ADAM_1", "UNET_BCE_SGD_1", "UNET_MSE_ADAM_1", "UNET_MSE_SGD_1"]
+netnames = ["SATNET_MSE_ADAM", "SATNET_BCE_ADAM", "SATNET_MSE_SGD", "SATNET_BCE_SGD"]
+for i in range(4):
+	for net in netnames:
+		with open("satnet_results/results" + str(i) + "/" + net + ".model", "rb") as file:
+			m = NetRecovery(file).load()
 
-	data = test_model(m, jaccard=True)
+		data = test_model(m, jaccard=True)
 
-	print(net)
-	print(data[1:])
+		print(i)
+		print(net)
+		print(data[1:])
 
-	with open("training_eval/data/" + net + ".pt", "wb") as file:
-		pickle.dump(data, file)
+		with open("training_eval/data/" + str(i) + "_" + net + ".pt", "wb") as file:
+			pickle.dump(data, file)
+
 
 with open("satresult\results1\results\trained_models" + "UNET_MSE_ADAM_1", "rb") as file:
 	m = NetRecovery(file).load()

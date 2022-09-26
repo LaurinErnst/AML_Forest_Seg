@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.6)  26 SEP 2022 23:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.16)  26 SEP 2022 16:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -785,30 +785,9 @@ File: german.lbx 2020/12/31 v3.16 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-Package biblatex Info: Document encoding is UTF8 ....
-
-(d:/Studium/TexLive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-10-18 L3 programming layer (loader) 
-)
-Package biblatex Info: ... and expl3
-(biblatex)             2021-10-18 L3 programming layer (loader) 
-(biblatex)             is new enough (at least 2020/04/06),
-(biblatex)             setting 'casechanger=expl3'.
-
-(d:/Studium/TexLive/2021/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
-(d:/Studium/TexLive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2021-08-27 L3 Experimental document command parser
-)
-Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
-)
 \openout3 = `main.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-
-
-Package biblatex Warning: File 'main.bbl' is wrong format version - expected 3.
-1.
-
 Package biblatex Info: ... file 'main.bbl' found.
 (./main.bbl)
 Package biblatex Info: Reference section=0 on input line 179.
@@ -853,136 +832,115 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 27
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-{d:/Studium/TexLive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) [2]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[1]
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) [2]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 191.
+(Font)              size <24.88> substituted on input line 190.
 
 (./main.toc)
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [2
+ [1
 
 ]
 Chapter 1.
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 196.
+(Font)              size <24.88> substituted on input line 195.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 196.
+(Font)              size <24.88> substituted on input line 195.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 196.
+(Font)              size <24.88> substituted on input line 195.
 
 (./chapters/introduction.tex)pdfTeX warning (ext4): destination with the same i
 dentifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.198 \chapter
-              {Data Preprocessing} [1
+l.197 \chapter
+              {Dataset} [1
 
 ]
 Chapter 2.
-(./chapters/data_prep.tex)pdfTeX warning (ext4): destination with the same iden
-tifier (name{page.2}) has been already used, duplicate ignored
+(/Users/laurin/AML_Forest_Seg/Report/chapters/data_prep.texpdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.200 \chapter
-              {Naive Segmentator + Jaccard?} [2
+l.48 
+      [2
 
 ]
+
+Package caption Warning: \label without proper reference on input line 55.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `badimg' on page 3 undefined on input line 49.
+
+
+Package caption Warning: \label without proper reference on input line 64.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `badimg2' on page 3 undefined on input line 51.
+
+<images/satellite_images/1_imag.jpg, id=154, 256.96pt x 256.96pt>
+File: images/satellite_images/1_imag.jpg Graphic file (type jpg)
+<use images/satellite_images/1_imag.jpg>
+Package pdftex.def Info: images/satellite_images/1_imag.jpg  used on input line 56.
+(pdftex.def)             Requested size: 182.09485pt x 182.09782pt.
+<images/satellite_images/1_mask.jpg, id=155, 256.96pt x 256.96pt>
+File: images/satellite_images/1_mask.jpg Graphic file (type jpg)
+<use images/satellite_images/1_mask.jpg>
+Package pdftex.def Info: images/satellite_images/1_mask.jpg  used on input line 57.
+(pdftex.def)             Requested size: 182.09485pt x 182.09782pt.
+<images/satellite_images/10_overlap.png, id=156, 256.96pt x 256.96pt>
+File: images/satellite_images/10_overlap.png Graphic file (type png)
+<use images/satellite_images/10_overlap.png>
+Package pdftex.def Info: images/satellite_images/10_overlap.png  used on input line 65.
+(pdftex.def)             Requested size: 182.09485pt x 182.09782pt.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+Make it at least 14.49998pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[3 </Users/laurin/AML_Forest_Seg/Report/images/satellite_images/1_imag.jpg> </Users/laurin/AML_Forest_Seg/Report/images/satellite_images/1_mask.jpg>] [4 </Users/laurin/AML_Forest_Seg/Report/images/satellite_images/10_overlap.png>]
 Chapter 3.
-(./chapters/jaccard.tex
-<./images//satellite_images/5109_mask.jpg, id=152, 256.96pt x 256.96pt>
-File: ./images//satellite_images/5109_mask.jpg Graphic file (type jpg)
-<use ./images//satellite_images/5109_mask.jpg>
-Package pdftex.def Info: ./images//satellite_images/5109_mask.jpg  used on inpu
-t line 15.
+(/Users/laurin/AML_Forest_Seg/Report/chapters/jaccard.tex
+<./images/satellite_images/5109_mask.jpg, id=172, 256.96pt x 256.96pt>
+File: ./images/satellite_images/5109_mask.jpg Graphic file (type jpg)
+<use ./images/satellite_images/5109_mask.jpg>
+Package pdftex.def Info: ./images/satellite_images/5109_mask.jpg  used on input line 15.
 (pdftex.def)             Requested size: 91.04742pt x 91.04695pt.
-<./images//satellite_images/5110_mask.jpg, id=153, 256.96pt x 256.96pt>
-File: ./images//satellite_images/5110_mask.jpg Graphic file (type jpg)
-<use ./images//satellite_images/5110_mask.jpg>
-Package pdftex.def Info: ./images//satellite_images/5110_mask.jpg  used on inpu
-t line 21.
+<./images/satellite_images/5110_mask.jpg, id=173, 256.96pt x 256.96pt>
+File: ./images/satellite_images/5110_mask.jpg Graphic file (type jpg)
+<use ./images/satellite_images/5110_mask.jpg>
+Package pdftex.def Info: ./images/satellite_images/5110_mask.jpg  used on input line 21.
 (pdftex.def)             Requested size: 91.04742pt x 91.04695pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
-[3
+[5
 
- <./images//satellite_images/5109_mask.jpg> <./images//satellite_images/5110_ma
-sk.jpg>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[4]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5]
-<./images//satellite_images/segments_fz.jpg, id=183, 462.528pt x 346.896pt>
-File: ./images//satellite_images/segments_fz.jpg Graphic file (type jpg)
-<use ./images//satellite_images/segments_fz.jpg>
-Package pdftex.def Info: ./images//satellite_images/segments_fz.jpg  used on in
-put line 96.
-(pdftex.def)             Requested size: 364.19664pt x 273.16086pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6 <./images//satellite_images/segments_fz.jpg>])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[7]
+ <./images/satellite_images/5109_mask.jpg> <./images/satellite_images/5110_mask.jpg>] [6] [7]) [8]
 Chapter 4.
-(./chapters/unet_training.tex [8
+(/Users/laurin/AML_Forest_Seg/Report/chapters/unet_training.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 3.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3.
+ [9
 
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[9]) (./chapters/eval.tex
+] [10]) (/Users/laurin/AML_Forest_Seg/Report/chapters/eval.tex
 Overfull \hbox (7.28694pt too wide) in paragraph at lines 21--40
  [][] 
  []
@@ -992,36 +950,18 @@ Overfull \hbox (7.28694pt too wide) in paragraph at lines 50--69
  [][] 
  []
 
-<./images//best-MSE-SGD-UNET.png, id=212, 578.16pt x 433.62pt>
-File: ./images//best-MSE-SGD-UNET.png Graphic file (type png)
-<use ./images//best-MSE-SGD-UNET.png>
-Package pdftex.def Info: ./images//best-MSE-SGD-UNET.png  used on input line 81
-.
+<./images/best-MSE-SGD-UNET.png, id=222, 578.16pt x 433.62pt>
+File: ./images/best-MSE-SGD-UNET.png Graphic file (type png)
+<use ./images/best-MSE-SGD-UNET.png>
+Package pdftex.def Info: ./images/best-MSE-SGD-UNET.png  used on input line 81.
 (pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[10]
+[11]
 Underfull \vbox (badness 1210) has occurred while \output is active []
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[11]
+ [12]
 Overfull \hbox (7.28694pt too wide) in paragraph at lines 99--118
  [][] 
  []
@@ -1031,11 +971,10 @@ Overfull \hbox (7.28694pt too wide) in paragraph at lines 127--146
  [][] 
  []
 
-<./images//best-MSE-ADAM-UNET.png, id=230, 578.16pt x 433.62pt>
-File: ./images//best-MSE-ADAM-UNET.png Graphic file (type png)
-<use ./images//best-MSE-ADAM-UNET.png>
-Package pdftex.def Info: ./images//best-MSE-ADAM-UNET.png  used on input line 1
-55.
+<./images/best-MSE-ADAM-UNET.png, id=239, 578.16pt x 433.62pt>
+File: ./images/best-MSE-ADAM-UNET.png Graphic file (type png)
+<use ./images/best-MSE-ADAM-UNET.png>
+Package pdftex.def Info: ./images/best-MSE-ADAM-UNET.png  used on input line 155.
 (pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1043,28 +982,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[12 <./images//best-MSE-SGD-UNET.png>]
+ [13 <./images/best-MSE-SGD-UNET.png>]
 Underfull \vbox (badness 1067) has occurred while \output is active []
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[13]
+ [14]
 Overfull \hbox (7.28694pt too wide) in paragraph at lines 175--194
  [][] 
  []
@@ -1074,36 +995,18 @@ Overfull \hbox (7.28694pt too wide) in paragraph at lines 203--222
  [][] 
  []
 
-<./images//best-BCE-SGD-UNET.png, id=246, 578.16pt x 433.62pt>
-File: ./images//best-BCE-SGD-UNET.png Graphic file (type png)
-<use ./images//best-BCE-SGD-UNET.png>
-Package pdftex.def Info: ./images//best-BCE-SGD-UNET.png  used on input line 23
-2.
+<./images/best-BCE-SGD-UNET.png, id=255, 578.16pt x 433.62pt>
+File: ./images/best-BCE-SGD-UNET.png Graphic file (type png)
+<use ./images/best-BCE-SGD-UNET.png>
+Package pdftex.def Info: ./images/best-BCE-SGD-UNET.png  used on input line 232.
 (pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[14 <./images//best-MSE-ADAM-UNET.png>]
+[15 <./images/best-MSE-ADAM-UNET.png>]
 Underfull \vbox (badness 1210) has occurred while \output is active []
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
+ [16]
 Overfull \hbox (7.28694pt too wide) in paragraph at lines 250--269
  [][] 
  []
@@ -1113,118 +1016,62 @@ Overfull \hbox (7.28694pt too wide) in paragraph at lines 278--297
  [][] 
  []
 
-<./images//best-BCE-ADAM-UNET.png, id=262, 578.16pt x 433.62pt>
-File: ./images//best-BCE-ADAM-UNET.png Graphic file (type png)
-<use ./images//best-BCE-ADAM-UNET.png>
-Package pdftex.def Info: ./images//best-BCE-ADAM-UNET.png  used on input line 3
-07.
+<./images/best-BCE-ADAM-UNET.png, id=271, 578.16pt x 433.62pt>
+File: ./images/best-BCE-ADAM-UNET.png Graphic file (type png)
+<use ./images/best-BCE-ADAM-UNET.png>
+Package pdftex.def Info: ./images/best-BCE-ADAM-UNET.png  used on input line 307.
 (pdftex.def)             Requested size: 433.61893pt x 325.2142pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16 <./images//best-BCE-SGD-UNET.png>])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[17]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[18 <./images//best-BCE-ADAM-UNET.png>] (./chapters/sgd_vs_adam.tex
-<./images//sgd_vs_adam_mse_test.png, id=281, 578.16pt x 433.62pt>
-File: ./images//sgd_vs_adam_mse_test.png Graphic file (type png)
-<use ./images//sgd_vs_adam_mse_test.png>
-Package pdftex.def Info: ./images//sgd_vs_adam_mse_test.png  used on input line
- 17.
+[17 <./images/best-BCE-SGD-UNET.png>]) [18] [19 <./images/best-BCE-ADAM-UNET.png>] (/Users/laurin/AML_Forest_Seg/Report/chapters/sgd_vs_adam.tex
+<./images/sgd_vs_adam_mse_test.png, id=291, 578.16pt x 433.62pt>
+File: ./images/sgd_vs_adam_mse_test.png Graphic file (type png)
+<use ./images/sgd_vs_adam_mse_test.png>
+Package pdftex.def Info: ./images/sgd_vs_adam_mse_test.png  used on input line 17.
 (pdftex.def)             Requested size: 182.09485pt x 136.57117pt.
-<./images//sgd_vs_adam_mse_train.png, id=282, 578.16pt x 433.62pt>
-File: ./images//sgd_vs_adam_mse_train.png Graphic file (type png)
-<use ./images//sgd_vs_adam_mse_train.png>
-Package pdftex.def Info: ./images//sgd_vs_adam_mse_train.png  used on input lin
-e 17.
+<./images/sgd_vs_adam_mse_train.png, id=292, 578.16pt x 433.62pt>
+File: ./images/sgd_vs_adam_mse_train.png Graphic file (type png)
+<use ./images/sgd_vs_adam_mse_train.png>
+Package pdftex.def Info: ./images/sgd_vs_adam_mse_train.png  used on input line 17.
 (pdftex.def)             Requested size: 182.09485pt x 136.57117pt.
-<./images//sgd_vs_adam_bce_test.png, id=283, 578.16pt x 433.62pt>
-File: ./images//sgd_vs_adam_bce_test.png Graphic file (type png)
-<use ./images//sgd_vs_adam_bce_test.png>
-Package pdftex.def Info: ./images//sgd_vs_adam_bce_test.png  used on input line
- 19.
+<./images/sgd_vs_adam_bce_test.png, id=293, 578.16pt x 433.62pt>
+File: ./images/sgd_vs_adam_bce_test.png Graphic file (type png)
+<use ./images/sgd_vs_adam_bce_test.png>
+Package pdftex.def Info: ./images/sgd_vs_adam_bce_test.png  used on input line 19.
 (pdftex.def)             Requested size: 182.09485pt x 136.57117pt.
-<./images//sgd_vs_adam_bce_train.png, id=284, 578.16pt x 433.62pt>
-File: ./images//sgd_vs_adam_bce_train.png Graphic file (type png)
-<use ./images//sgd_vs_adam_bce_train.png>
-Package pdftex.def Info: ./images//sgd_vs_adam_bce_train.png  used on input lin
-e 19.
+<./images/sgd_vs_adam_bce_train.png, id=294, 578.16pt x 433.62pt>
+File: ./images/sgd_vs_adam_bce_train.png Graphic file (type png)
+<use ./images/sgd_vs_adam_bce_train.png>
+Package pdftex.def Info: ./images/sgd_vs_adam_bce_train.png  used on input line 19.
 (pdftex.def)             Requested size: 182.09485pt x 136.57117pt.
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[19
+) [20
 
 
- <./images//sgd_vs_adam_mse_test.png> <./images//sgd_vs_adam_mse_train.png> <./
-images//sgd_vs_adam_bce_test.png> <./images//sgd_vs_adam_bce_train.png>]
+ <./images/sgd_vs_adam_mse_test.png> <./images/sgd_vs_adam_mse_train.png> <./images/sgd_vs_adam_bce_test.png> <./images/sgd_vs_adam_bce_train.png>]
 Chapter 5.
-(./chapters/satnet.tex
+(/Users/laurin/AML_Forest_Seg/Report/chapters/satnet.tex
 
 Package caption Warning: \label without proper reference on input line 6.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `satnet_structure' on page 20 undefined on input line 
-1.
+LaTeX Warning: Reference `satnet_structure' on page 21 undefined on input line 1.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-<images/satnet_structure.png, id=296, 520.94624pt x 723.70375pt>
+<images/satnet_structure.png, id=305, 520.94624pt x 723.70375pt>
 File: images/satnet_structure.png Graphic file (type png)
 <use images/satnet_structure.png>
 Package pdftex.def Info: images/satnet_structure.png  used on input line 7.
 (pdftex.def)             Requested size: 318.66946pt x 442.69543pt.
-[20
+[21
 
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[21 <./images/satnet_structure.png>]
+] [22 </Users/laurin/AML_Forest_Seg/Report/images/satnet_structure.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 22--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
@@ -1233,50 +1080,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
-<images/satellite_images/1_mask.jpg, id=308, 256.96pt x 256.96pt>
-File: images/satellite_images/1_mask.jpg Graphic file (type jpg)
-<use images/satellite_images/1_mask.jpg>
-Package pdftex.def Info: images/satellite_images/1_mask.jpg  used on input line
- 35.
-(pdftex.def)             Requested size: 182.09485pt x 182.09782pt.
-<images/satellite_images/1_imag.jpg, id=309, 256.96pt x 256.96pt>
-File: images/satellite_images/1_imag.jpg Graphic file (type jpg)
-<use images/satellite_images/1_imag.jpg>
-Package pdftex.def Info: images/satellite_images/1_imag.jpg  used on input line
- 36.
-(pdftex.def)             Requested size: 182.09485pt x 182.09782pt.
-<images/satellite_images/10_overlap.png, id=310, 256.96pt x 256.96pt>
-File: images/satellite_images/10_overlap.png Graphic file (type png)
-<use images/satellite_images/10_overlap.png>
-Package pdftex.def Info: images/satellite_images/10_overlap.png  used on input 
-line 44.
-(pdftex.def)             Requested size: 182.09485pt x 182.09782pt.
 )
+Underfull \hbox (badness 10000) in paragraph at lines 29--208
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+ []
 
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[22]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[23 <./images/satellite_images/1_mask.jpg> <./images/satellite_images/1_imag.jp
-g> <./images/satellite_images/10_overlap.png>]
+[23]
 Chapter 6.
-[24
+(/Users/laurin/AML_Forest_Seg/Report/chapters/outlook.tex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
+ [24
 
 ]
-Chapter 7.
-(./chapters/outlook.tex) [25
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
+ (/Users/laurin/AML_Forest_Seg/Report/main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 691ECBA58FC50D029EC6F4F251DA7E28;1544.
 
 ] (./main.aux)
 
@@ -1293,31 +1114,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21712 strings out of 478579
- 362830 string characters out of 5853450
- 1171685 words of memory out of 5000000
- 39186 multiletter control sequences out of 15000+600000
- 418543 words of font info for 88 fonts, out of 8000000 for 9000
+ 17173 strings out of 492616
+ 281059 string characters out of 6129480
+ 798491 words of memory out of 5000000
+ 20711 multiletter control sequences out of 15000+600000
+ 18416 words of font info for 74 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 67i,12n,77p,1193b,2241s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/Studium/TexLive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}<d:/Studium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<d:/Studium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-d:/Studium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d
-:/Studium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/
-Studium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/St
-udium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Stud
-ium/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/Studiu
-m/TexLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Studium/T
-exLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Studium/Te
-xLive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Studium/TexL
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><d:/Studium/TexLi
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/Studium/T
-exLive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (29 pages, 775328 bytes).
+ 42i,12n,43p,1229b,2191s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/laurin/AML_Forest_Seg/Report/main.pdf (27 pages, 704240 bytes).
 PDF statistics:
- 413 PDF objects out of 1000 (max. 8388607)
- 327 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 391 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
+ 93 named destinations out of 1000 (max. 500000)
+ 263 words of extra memory for PDF output out of 10000 (max. 10000000)
 
