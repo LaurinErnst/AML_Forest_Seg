@@ -29,4 +29,46 @@ One training parameter which we do not have in the U-Net training is the dropout
 \section{Results}
 bad on img with little to no forest\\
 
-\section{}
+\section{Interesting Data}
+
+After training the SatNet, we let it run over the whole dataset and picked out some of the images where the model performed best, worst and most average on (w.r.t. the Jaccard index), to get a deeper understanding of the SatNet's strengths and weaknesses.
+
+\subsubsection{Strengths}
+
+Starting with the strengths, the SatNet performes best on images which are just plain forest, see \ref{satnet_best}. This is to be expected, because the picture is basically only trees, which makes it easy for the model to assign all pixels to forest.
+
+\subsubsection{Weaknesses}
+
+\begin{figure}[!h]
+  \begin{center}
+  \label{satnet_best}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/sat_best_real}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/sat_best_calc}
+  \caption{Image where SatNet performed best on; left is the image with the real mask and the calculated mask on the right. It fits perfectly}
+  \end{center}
+\end{figure}
+
+For the SatNet performances, there are two examples which represent most of what went wrong when the SatNet misclassified almost all pixels in an image. In the first example, as mentioned in the Dataset chapter, in some of the images in the dataset it is not very clear if there is forest or just bushes and our model performed quite bad on those. In \ref{satnet_worst1}, one could make an argument that the green parts are bushes and not really forest, but the segmentation of our model seems more appropriate than claiming that there is no forest at all. In addition to that, the SatNet actually covered the forest really accurately, which makes it unfortunate that this is an image with one of the worst scores.
+
+\begin{figure}
+  \begin{center}
+  \label{satnet_worst1}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/sat_worst_1}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/sat_worst_2}
+  \caption{Image where SatNet performed worst on; left is the image with the real mask (no pixels are classified as forest) and the calculated mask on the right}
+  \end{center}
+\end{figure}
+
+Then again, bad performances also occur on images where the given masks are completely reasonable. In these cases, it often is fields the SatNet struggles with, maybe because they form a coherent shape, which forests also do, and often have a brownish color, which is not too far from a forest either. In \ref{satnet_worst2}, we can see that a lot of the fields, which the true mask correctly does not identify as forest, are claimed to be forest by the SatNet. Again, the argument could be made that our model did a better job than the true mask in the top right corner but that is besides the point. \\
+
+\begin{figure}
+\begin{center}
+  \label{satnet_worst2}
+  \includegraphics[width=.3\linewidth]{images/satellite_images/sat_worst2_1}
+  \includegraphics[width=.3\linewidth]{images/satellite_images/sat_worst2_2}
+  \includegraphics[width=.3\linewidth]{images/satellite_images/sat_worst2_3}
+  \caption{Image where SatNet performed worst on; left is the image with the real mask (no pixels are classified as forest) and the calculated mask in the middle with its outline on the right}
+  \end{center}
+\end{figure}
+
+\subsubsection{Average Performance}
