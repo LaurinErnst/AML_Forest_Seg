@@ -48,8 +48,8 @@ def test_model(model, n=5, jaccard=False):
 		gc.collect()
 
 		if i % 100 == 0:
-			# print(i / 5108)
-			pass
+			print(i / 5108)
+		
 		with torch.no_grad():
 			y_hat = torch.sigmoid(model(x))
 
@@ -77,3 +77,10 @@ for net in netnames:
 
 	with open("training_eval/data/" + net + ".pt", "wb") as file:
 		pickle.dump(data, file)
+
+with open("satresult\results1\results\trained_models" + "UNET_MSE_ADAM_1", "rb") as file:
+	m = NetRecovery(file).load()
+
+	data = test_model(m, jaccard=True)
+
+	print(data[1:])
