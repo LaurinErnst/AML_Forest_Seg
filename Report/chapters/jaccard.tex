@@ -1,18 +1,46 @@
-\section{Introduction Jaccard Index}
-\section{Expected Jaccard Index of a Random Segmentator}
-As mentioned before, the Jaccard index is defined by
-
+\section{Performance measures}
+In order to evaluate how good our model performs, we need a metric to measure the precision of the predicted masks. 
+In the following, $A$ is the set of pixels which are actually forest and $B$ is the set of pixels which our segmentator classified as forest. $Y$ is the set of pixels of the true mask, $\hat{Y}$ the set of predicted pixels. The total number of pixels is $n=256^2$.\\
+An obvious approach for comparing the similarity between $A$ and $B$ is the so-called simple matching coefficient \textbf{SMC}. The \textbf{SMC} is given by
 \begin{equation}
-  J(A, B) := \frac{|A \cap B|}{|A \cup B|}
+	\textbf{SMC}:=\frac{|Y\cap \hat{Y}|}{n},
+\end{equation} 
+so it is simply computed as the proportion of correctly predicted pixels.\\
+Though this method might seem easy and intuitive, it has too serious drawbacks to be used as a meaningful performance measurement. The main issue is that forest and non-forest regions are treated symmetrically, even though the goal of our segmentator is only the correct prediction of the forest regions. This aspect is clarified by the following example: 
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.4\linewidth]{satellite_images/5109_mask.jpg}
+		\caption{True mask}
+		\label{fig:sub1}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.4\linewidth]{satellite_images/5110_mask.jpg}
+		\caption{Prediction}
+		\label{fig:sub2}
+	\end{subfigure}
+	\caption{The gray regions depict forestial, the black regions non-forestial areas. }
+	\label{fig:test}
+\end{figure}
+We assume the left mask shows the true forestial areas, the right mask is the prediction of our model. Clearly, there is no overlap between the forest regions, so $|A \cap B| = 0$, but there is still overlap between the non-forest regions in the centre of the images. Hence, we get $\textbf{SMC}=\frac{128\cdot 256}{256 \cdot 256}=\frac{1}{2}$, even though the forest prediction was completely wrong. This leads to the unpleasant fact that $\textbf{SMC}$ is not really useful for measuring the performance of our prediction.\\
+
+As an alternative, we could change the denominator of the \textbf{SMC} such that we only compute the proportion of correctly predicted pixels in the set of the total (predicted and actual) forestial areas. Thus, we get
+\begin{equation}
+	J(A, B) := \frac{|A \cap B|}{|A \cup B|},
 \end{equation}
 
 which can be rewritten as
 
 \begin{equation}
-  J(A, B) = \frac{|A \cap B|}{|A| + |B \setminus A |}
+	J(A, B) = \frac{|A \cap B|}{|A| + |B \setminus A |}.
 \end{equation}
+This coefficient is very common and known as Jaccard index $J(A,B)$.
 
-In our case, $A$ is the set of pixels, which are forest, and $B$ is the set of pixels, our segmentator classified as forest. To get a better feeling of the Jaccard index, we wanted to calculate the expected index a simple random segmentator gives to compare it to our models. This random segmentator would just assign a $1$ or $0$ with probability $\frac{1}{2}$ to each pixel, where $1$ means forest and $0$ means no forest. Of course, this segmentator does not perform well, but it gives a benchmark for comparison.
+\section{Expected Jaccard Index of a Random Segmentator}
+To get a better feeling of the Jaccard index, we wanted to calculate the expected index a simple random segmentator gives to compare it to our models. This random segmentator would just assign a $1$ or $0$ with probability $\frac{1}{2}$ to each pixel, where $1$ means forest and $0$ means no forest. Of course, this segmentator does not perform well, but it gives a benchmark for comparison.
 
 Now, let us look at the problem mathematically. Take a arbitrary but fixed satellite image with its mask and define $n$ as the number of pixels it has (for us, that is $256^2$ in every image). Define $m$ as the number of pixels which are forest (meaning they have value 1 in the mask). Obviously, this number is not fixed throughout the images we have, but it is a deterministic constant for every single image.
 
@@ -48,3 +76,16 @@ and so
 \end{equation}
 
 $n$ is a constant throughout the dataset, but $m$ differs for every image. The average of the dataset is $m=40900$, so we can say that our models perform better than guessing if their average Jaccard index is greater than $J = 0.39$ (confirmed by random simulations). We could try to improve the random segmentator by adjusting the guess rate according to the proportion of forest in the dataset, but experiments show that this does not make a big difference in performance.
+
+\section{Segmentation without Neural Networks}
+As we have seen in the final project of the lecture "Fundamentals of Machine Learning", rather simple machine learning methods could outperform far more complex structures. Thus, we decided to implement a model that does not rely on neural networks. \\
+The model we created works in the following way:
+\begin{enumerate}
+	\item Use a common segmentation algorithm to split the satellite image in segments.
+	\item For each segment, compute features.
+	\item Use a model like logistic regression or a support vector machine to classify each segment as forest or non-forest.
+	\item Join all the segments (now consisting of binary data) to obtain a prediction mask.
+\end{enumerate}
+
+\subsection{Segmentation of images}
+In order to segment the satellite images in the first step, we use the Felzenszwalb-Huttenlocher algorithm (Zitat!!!!!!!!!!!!!!!!!!!!)

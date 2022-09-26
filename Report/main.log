@@ -800,6 +800,22 @@ File: german.lbx 2022/02/02 v3.17 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
+Package biblatex Info: Document encoding is UTF8 ....
+
+(d:/Studium/TexLive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-10-18 L3 programming layer (loader) 
+)
+Package biblatex Info: ... and expl3
+(biblatex)             2021-10-18 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(d:/Studium/TexLive/2021/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
+(d:/Studium/TexLive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2021-08-27 L3 Experimental document command parser
+)
+Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
+)
 \openout3 = `main.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
@@ -1171,6 +1187,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [19
 
+<<<<<<< HEAD
+[19
+=======
+>>>>>>> 49de2b97d956b172f17f148e46045218a14ae493
 
  <./images//sgd_vs_adam_mse_test.png> <./images//sgd_vs_adam_mse_train.png> <./
 images//sgd_vs_adam_bce_test.png> <./images//sgd_vs_adam_bce_train.png>]
@@ -1230,7 +1250,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [22]
 Chapter 7.
+<<<<<<< HEAD
 (./chapters/outlook.tex) [23
+=======
+[24
+
+]
+Chapter 8.
+(/Users/laurin/AML_Forest_Seg/Report/chapters/outlook.tex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+ [23
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+ (/Users/laurin/AML_Forest_Seg/Report/main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D4916CA55ECFD1625ABEF3A51F701254;1437.
+>>>>>>> 8617d2a71dad46f4ed7dc27536bdbcc890996430
 
 ] (./main.aux)
 
