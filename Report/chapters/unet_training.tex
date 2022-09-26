@@ -16,22 +16,24 @@ For every run we saved the training and test loss of every epoch and the final w
 
 \vspace{3 em}
 \section{Choice of Loss functions and optimizers}
-We chose mean squared error as the first loss function as it is easy to understand and interpret. Additionally we have seen many papers on segmentation use the cross-entropy loss. 
+We chose mean squared error as the first loss function as it is easy to understand and interpret. Additionally we have seen many papers on segmentation use the cross-entropy loss.
 Therefore we decided to use it as well to see if it would improve training. We specifically used cross-entropy loss with a sigmoid layer integrated as this is numerically more stable than using a separate sigmoid layer followed by cross-entropy loss.
 
 For optimizers we went a similar way. We chose stochastic gradient descent for its simplicity and speed. Since we have a training set containing 4000 images, we were concerned about speed and thought stochastic gradient descent could have an advantage in this regard.
 Additionally we chose the ADAM algorithm as it is a proven optimizer for image segmentation. This algorithm is complexer since it also takes higher moment into consideration.
-Therefore we thought it could give us more accurate results. 
+Therefore we thought it could give us more accurate results.
 
 \vspace{3 em}
-\section{Training hyperparameter's}
+\section{Training hyperparameters}
+
 \subsection{Loss functions}
 
 For both the mean squared error loss and the cross-entropy loss we used mean reduction meaning the loss function would return the mean loss of the input batch.
 
 \subsection{Optimizer parameters}
+
 \subsubsection{Stochastic gradient descent}
-For stochastic gradient descent we used an initial learning rate of $10^{-4}$ which was the biggest learning rate possible. 
+For stochastic gradient descent we used an initial learning rate of $10^{-4}$ which was the biggest learning rate possible.
 When using a bigger initial learning rate the loss would diverge after three to four batches. Additionally we reduced the learning rate by a factor of ten after every five steps.
 As we already reduced the learning rate every five epochs, we decided not to use weight decay as lowering the learning rate should reduce overfitting sufficiently.
 Training confirmed this suspicion as we never had a problem with overfitting.
@@ -40,12 +42,10 @@ Training confirmed this suspicion as we never had a problem with overfitting.
 When using ADAM with cross-entropy loss, we used an initial learning rate of $10^{-4}$. In combination with mean-squared error loss, we were able to use an initial learning rate of $10^{-3}$ which had a notable change in the speed of initial convergence.
 Again we lowered our learning rate by a factor of ten every five epochs and thus did not use weight decay. We left $\beta_1$ and $\beta_2$ as the standard values of $0.9$ and $0.999$. All other parameters where left as the pytorch standard values as well.
 
-
 In summary we mostly changed the learning rate as we had problems with divergence. Since pytorch itself is already very optimized we decided to leave the remaining parameters as default.
 
 \subsection{Batch size}
-In order to get a meaningful gradient we try to maximize the batch size. 
+In order to get a meaningful gradient we try to maximize the batch size.
 In this case we would only be limited by the GPUs memory.
 But we also wanted the gradient of every batch to have comparable significance, hence we tried to find a batch size which can divide 4000.
 This lead to the batch size being 160. Since for testing all of these considerations were not as important we decided to use a test batch size of 100 as our training ran sufficiently fast.
-

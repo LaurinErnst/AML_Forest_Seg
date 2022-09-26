@@ -66,9 +66,9 @@ with open("training_eval/testmodel", "rb") as file:
 
 # overlap_without_model(10).save("training_eval/masks/" + str(10) + "_overlap.png")
 # """
-images = create_masks(m, [4751, 2828, 2833, 2834, 1930,  # worst
-                          3171, 943, 1665, 3492,  # okay
-                          3675, 2559, 7, 4189, 121])  # best
+images = create_masks(m, [2828, 2912, 5099,  # worst
+                          505, 2366, 3490,  # okay
+                          7])  # best
 
 for i, image in enumerate(images):
 	image[1].save("training_eval/masks/" + str(i) + "_1.png")

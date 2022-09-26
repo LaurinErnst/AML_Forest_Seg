@@ -38,31 +38,29 @@ shuffle function. The epoch\_ finished function is used to check wether
  the dataset has been completely stepped through and if therefore a new
  epoch has to be started.
 
-Our image data is returned as pytorch tensors respectively containing
-three arrays for every image one for red one for green and one for blue.
- Our mask data is returned as a pytorch tensor consisting of only one
-  array per mask containing of zeros and ones.
+Our image data is returned as pytorch tensors respectively containing three arrays for every image one for red one for green and one for blue. Our mask data is returned as a pytorch tensor consisting of only one array per mask containing of zeros and ones.
 
-  \section{Problems with the Dataset}
-  When evaluating the training of our models, we looked at the data on which our model performed the worst. One thing that became noticable was the lacking quality of some of the training data as well as some controversial masking.
+\section{Problems with the Dataset}
 
-  For example, in \ref{badimg} we can see a satellite image on the left and its given mask on the right; remember that black means no forest. In the image there is one big strip of forest in th south, but the whole image is classified as no forest. This is only one example of images where large chunks of forest are not classified as forest and so make it harder for our neural networks to properly train on the data.
+When evaluating the training of our models, we looked at the data on which our model performed the worst. One thing that became noticable was the lacking quality of some of the training data as well as some controversial masking.
 
-  Some data also classifies large chunks of just ground without any trees as forest. Depending on the size of those chunks, one could argue that it is just a clearing in the forest and thus qualifies as part of the forest. But the more often this appears, the harder it becomes for the networks to tell a clearing in the forest and just a plain field apart. An example of this can be seen in \ref{badimg2}, where the reddish part is what is classified as forest and the only non forest pixels are a small part in the upper right part of the image.
+For example, in \ref{badimg} we can see a satellite image on the left and its given mask on the right; remember that black means no forest. In the image there is one big strip of forest in th south, but the whole image is classified as no forest. This is only one example of images where large chunks of forest are not classified as forest and so make it harder for our neural networks to properly train on the data. It is to be expected that a model either overfits to this faulty data, so that it does get a good score on them but fails to classify to forest, or the model cannot accurately segment this image, because the mask does not fit the picutre.
 
-  \begin{figure}
-    \begin{center}
-    \label{badimg}
-    \includegraphics[width=.4\linewidth]{images/satellite_images/1_imag}
-    \includegraphics[width=.4\linewidth]{images/satellite_images/1_mask}
-    \caption{Faulty Data}
-    \end{center}
-  \end{figure}
+Some data also classifies large chunks of just ground without any trees as forest. Depending on the size of those chunks, one could argue that it is just a clearing in the forest and thus qualifies as part of the forest. But the more often this appears, the harder it becomes for the networks to tell a clearing in the forest and just a plain field apart. An example of this can be seen in \ref{badimg2}, where the reddish part is what is classified as forest and the only non forest pixels are a small part in the upper right part of the image.
 
-  \begin{figure}
-    \begin{center}
-    \label{badimg2}
-    \includegraphics[width=.4\linewidth]{images/satellite_images/10_overlap}
-    \caption{Controversial Data: The }
-    \end{center}
-  \end{figure}
+\begin{figure}
+  \begin{center}
+  \label{badimg}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/1_imag}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/1_mask}
+  \caption{Faulty Data: The mask (left, black means no forest) not matching the given satellite image}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+  \label{badimg2}
+  \includegraphics[width=.4\linewidth]{images/satellite_images/10_overlap}
+  \caption{Controversial Classification: The red part resembles the pixels classified as forest, a lot of brown clearings are classified as forest}
+  \end{center}
+\end{figure}

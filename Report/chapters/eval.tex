@@ -1,18 +1,19 @@
+\\
 \section{Mean squared error loss}
 \subsubsection{Stochastic gradient descent}
-When training with stochastic gradient descent and mean 
-squared loss the loss always converged to around $0.28$ 
+When training with stochastic gradient descent and mean
+squared loss the loss always converged to around $0.28$
 with $0.263$ being our best loss.
 
-As you can see in table \ref*{tab:mse_sgd_train}, after around 10 epochs 
+As you can see in table \ref*{tab:mse_sgd_train}, after around 10 epochs
 the loss does not change much.
 This lets us conclude, that the model converged to a local minimum. Another explanation
-could be, that the learning rate was decreased too much thus slowing down convergence. 
-But the same phenomenon occurred when training with a constant learning rate at around 
+could be, that the learning rate was decreased too much thus slowing down convergence.
+But the same phenomenon occurred when training with a constant learning rate at around
 the same epoch.
 
-The fact that our final loss varies so much between our run, with the losses 
-converging at the same time, shows that doing a lot of runs with random 
+The fact that our final loss varies so much between our run, with the losses
+converging at the same time, shows that doing a lot of runs with random
 initialization of parameters is better than doing one long run.
 
 
@@ -41,7 +42,7 @@ initialization of parameters is better than doing one long run.
 \end{table}
 
 If we now take a look at our training loss, we can see that it is in around the same area. Thus our training
-has no problem with overfitting. Here we also have the same effect as before in training, after around 10 epochs 
+has no problem with overfitting. Here we also have the same effect as before in training, after around 10 epochs
 the loss does not change by much as seen in table \ref{tab:mse_sgd_test}.
 
 
@@ -85,12 +86,12 @@ As from epoch 10 onwards no real movement is seen.
 \newpage
 
 \subsubsection{ADAM}
-When training using ADAM as an optimizer, our training loss was always around $0.22$. 
-The best run had a final training loss of $0.2$. 
+When training using ADAM as an optimizer, our training loss was always around $0.22$.
+The best run had a final training loss of $0.2$.
 
-Looking at table \ref{tab:mse_adam_train} again the loss seems to converge after around 10 epochs. 
-Additionally after around 6 epochs we can see that the loss does not change more than $10^{-2}$. Like in the 
-case of SGD the losses vary by quite some margin. Thus again we can conclude that the 
+Looking at table \ref{tab:mse_adam_train} again the loss seems to converge after around 10 epochs.
+Additionally after around 6 epochs we can see that the loss does not change more than $10^{-2}$. Like in the
+case of SGD the losses vary by quite some margin. Thus again we can conclude that the
 strategy of training the network multiple times each with randomized initial parameters
 is better than one long training run.
 
@@ -120,7 +121,7 @@ is better than one long training run.
 
 Taking a look now at the test loss, we can again see, that it is about the same as the training loss.
 Therefore overfitting again seems unlikely. We can again see convergence and slowing down of convergence
-after around 10 epochs. 
+after around 10 epochs.
 
 \begin{table}[!ht]
     \centering
@@ -148,7 +149,7 @@ after around 10 epochs.
 
 Finally we take a look at figure \ref{im:best-MSE-ADAM-UNET} which displays the test and training
 loss for the model with the best fit. The model converges nicely with the exception of the sixth epoch,
-here we get a slight increase of the test loss and the training loss. In the end we can also see the start 
+here we get a slight increase of the test loss and the training loss. In the end we can also see the start
 of what seems like overfitting. The test loss gets bigger than the training loss and the gap starts to widen.
 
 \begin{figure}[h]
@@ -156,19 +157,19 @@ of what seems like overfitting. The test loss gets bigger than the training loss
     \caption{\label{im:best-MSE-ADAM-UNET} Loss over epochs for best fitted model}
 \end{figure}
 
-To conclude, training using MSE and Adam works well, after adjusting the learning rate every run converged 
+To conclude, training using MSE and Adam works well, after adjusting the learning rate every run converged
 to a local minimum.
 
 \section{Cross entropy loss}
 \subsubsection{Stochastic gradient descent}
  For training using cross-entropy loss and stochastic gradient descent we got a final training loss
- of about $0.65$ in every run. With our best run converging to $0.6357$. 
+ of about $0.65$ in every run. With our best run converging to $0.6357$.
 
  As we can see in table \ref{tab:bce_sgd_train} the loss seems to change only slightly after the 10th epoch.
  The losses stay relatively consistent in between runs. Eventhough they vary in absolute terms about the same,
  they vary much less in relative terms as they are almost three times as high.
 
- 
+
 
 \begin{table}[!ht]
     \centering
@@ -222,8 +223,8 @@ in the case of the training loss. The loss seems to be in the same area letting 
     \caption{\label{tab:bce_sgd_test}Test loss of all 6 runs using BCE and SGD}
 \end{table}
 
-Finally we can take a look at the best run for this combination of loss and optimizer in figure 
-\ref{im:best-BCE-SGD-UNET}. This again visualizes that after an initial steep drop, the loss seems to 
+Finally we can take a look at the best run for this combination of loss and optimizer in figure
+\ref{im:best-BCE-SGD-UNET}. This again visualizes that after an initial steep drop, the loss seems to
 change only slightly after 10 epochs and the test loss gets bigger than the training loss.
 
 
@@ -240,8 +241,8 @@ change only slightly after 10 epochs and the test loss gets bigger than the trai
 As with MSE, the training loss is significantly when training with ADAM. We got an average training loss
 off around $0.51$ with our lowest run converging to $0.507$.
 
-This time the rate of change seems to be still quite high after 15 epochs. Maybe we should have used more 
-epochs in this case. Still the results seem to be consistent over all 6 runs we had no big outlier and rate of 
+This time the rate of change seems to be still quite high after 15 epochs. Maybe we should have used more
+epochs in this case. Still the results seem to be consistent over all 6 runs we had no big outlier and rate of
 change has already slowed down significantly after 12 epochs.
 
 
@@ -269,9 +270,9 @@ change has already slowed down significantly after 12 epochs.
     \caption{\label{tab:bce_adam_train}Training loss of all 6 runs using BCE and ADAM}
 \end{table}
 
-Again the test loss seems to be approximately the same as the training loss. Interestingly in our best 
-training run,the test loss seems to be significantly worse than on average. This could mean, that we should 
-have used more epochs to train. 
+Again the test loss seems to be approximately the same as the training loss. Interestingly in our best
+training run,the test loss seems to be significantly worse than on average. This could mean, that we should
+have used more epochs to train.
 
 \begin{table}[!ht]
     \centering
@@ -298,9 +299,9 @@ have used more epochs to train.
 \end{table}
 
 
-Finally taking a look at our best trainings run once more in figure \ref{im:best-BCE-ADAM-UNET} we can see that 
+Finally taking a look at our best trainings run once more in figure \ref{im:best-BCE-ADAM-UNET} we can see that
 there is a big difference between training and test loss after the 5th epoch. This phenomenon only occurred in this
-run. In all the other runs the test loss is much closer to the training loss. 
+run. In all the other runs the test loss is much closer to the training loss.
 
 
 \begin{figure}[h]

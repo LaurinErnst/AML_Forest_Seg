@@ -22,8 +22,11 @@ To improve training, a batch normalisation is performed after every convolution 
 To summarise, we expect the SatNet to be faster in training, because it has significantly less channels and thus trainable parameters than the U-Net: The U-Net we trained has approximately 1.8 million parameters whereas the SatNet only has around 700k. Thus, the performance ceiling of the SatNet is expected to be lower than the U-Net's but maybe it can achieve better results in less time. \\
 
 \section{Training}
-The training algorith for the SatNet does not differ from the one we used for the U-Net; we had to different optimisers, namely the ADAM algorithm and the classical SGD and tried the BCE loss as well as the MSE loss. One training parameter which we do not have in the U-Net training is the dropout probability of the dropout layer in the SatNet, however, we did not experiment with it and left it at the standard $p_{drop}=0.5$.
+The training algorith for the SatNet does not differ from the one we used for the U-Net; we had to different optimisers, namely the ADAM algorithm and the classical SGD and tried the BCE loss as well as the MSE loss. The same procedure was applied, going through multiple runs to avoid getting stuck in a local minimum. However, because of time troubles, we reduced the amount of runs. Also, the runs are expected to be faster than the U-Net runs, because we have less parameters und thus the gradients become easier to compute. As mentioned before, this of course means that the SatNet could perform worse than the U-Net, but a faster training is ideal when facing a lack of time.
 
-basically the same as unet (losses and algorithms). as mentioned before, less parameters means faster training but ofc potentially worse results\\
+One training parameter which we do not have in the U-Net training is the dropout probability of the dropout layer in the SatNet, however, we did not experiment with it and left it at the standard $p_{drop}=0.5$. \\
+
 \section{Results}
 bad on img with little to no forest\\
+
+\section{}

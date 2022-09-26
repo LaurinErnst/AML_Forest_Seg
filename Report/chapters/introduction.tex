@@ -1,12 +1,5 @@
-Hier kommt die Einleitung rein.
-\begin{enumerate}
-  \item problems
-  \item why is it interesting
-  \item main obstacles
-\end{enumerate}
-
-\textbf{\color{red} Erster Satz}
-
 Satellite imagery has been around for a long time now and with a rising number of satellites and increasing access to their data, the need for automated analysis has grown significantly over the past years. This analysis can be applied to a lot of areas, one of which is the estimation of forest area through satellites; it can be used by environmental departments to monitor growth of forests over a span of time or cartographers can utilise it to create a map with deatiled forest areas without having to go over the images by hand.
 
-Creating a tool to identify forest on a satellite image can be translated to a semantic segmentaion of said image. This raises some interesting questions about what we even want to define as a forest. How many trees does an area need to become a forest? Do we need to differentiate between coniferous, deciduous and mixed forests? Do we want to recognise forests in all seasons, even though they look very different in summer, fall and winter for example? How large does a clearing have to be to be counted as not forest?
+Creating a tool to identify forest on a satellite image can be translated to a semantic segmentation of said image. This raises some interesting questions about what we even want to define as a forest. How many trees does an area need to become a forest? Do we need to differentiate between coniferous, deciduous and mixed forests? Do we want to recognise forests in all seasons, even though they look very different in summer, fall and winter for example? How large does a clearing have to be to be counted as not forest? The problem with these questions is that they are mostly answered by the data set we use to train our model, because creating a dataset on our own is too tedious of a task and so if we find a decent dataset, we have to settle for that.
+
+When attempting semantic segmentation of a given image, the first thing that comes to mind is the U-Net structure, which has been the standard computer vision approach to this kind of problem for a longer time. However, our task is a bit simpler than some many semantic segmentations, because we will just classify pixels as forest or non forest and not start identifying fields etc. The dataset we found on kaggle.com provided us with enough data to train neural networks and gave a RGB picture from which we can calculate a mask of the same dimension to identify the forest parts of the image. After training and evaluation we will see wether the model found a satisfying characterisation of a forest or not.
