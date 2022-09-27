@@ -939,6 +939,7 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 OUTPUT main.toc
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
@@ -980,7 +981,6 @@ INPUT ./images/satellite_images/10_overlap.png
 INPUT images/satellite_images/10_overlap.png
 INPUT ./images/satellite_images/10_overlap.png
 INPUT ./images/satellite_images/10_overlap.png
-INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT ./chapters/jaccard.tex
 INPUT ./chapters/jaccard.tex
 INPUT ./chapters/jaccard.tex
@@ -1095,6 +1095,18 @@ INPUT ./images/satellite_images/sat_worst2_3.png
 INPUT images/satellite_images/sat_worst2_3.png
 INPUT ./images/satellite_images/sat_worst2_3.png
 INPUT ./images/satellite_images/sat_worst2_3.png
+INPUT ./images/satellite_images/sat_avg1.png
+INPUT images/satellite_images/sat_avg1.png
+INPUT ./images/satellite_images/sat_avg1.png
+INPUT ./images/satellite_images/sat_avg1.png
+INPUT ./images/satellite_images/sat_avg2.png
+INPUT images/satellite_images/sat_avg2.png
+INPUT ./images/satellite_images/sat_avg2.png
+INPUT ./images/satellite_images/sat_avg2.png
+INPUT ./images/satellite_images/sat_avg3.png
+INPUT images/satellite_images/sat_avg3.png
+INPUT ./images/satellite_images/sat_avg3.png
+INPUT ./images/satellite_images/sat_avg3.png
 INPUT ./chapters/outlook.tex
 INPUT ./chapters/outlook.tex
 INPUT ./chapters/outlook.tex

@@ -37,8 +37,6 @@ After training the SatNet, we let it run over the whole dataset and picked out s
 
 Starting with the strengths, the SatNet performes best on images which are just plain forest, see \ref{satnet_best}. This is to be expected, because the picture is basically only trees, which makes it easy for the model to assign all pixels to forest.
 
-\subsubsection{Weaknesses}
-
 \begin{figure}[!h]
   \begin{center}
   \label{satnet_best}
@@ -47,6 +45,8 @@ Starting with the strengths, the SatNet performes best on images which are just 
   \caption{Image where SatNet performed best on; left is the image with the real mask and the calculated mask on the right. It fits perfectly}
   \end{center}
 \end{figure}
+
+\subsubsection{Weaknesses}
 
 For the SatNet performances, there are two examples which represent most of what went wrong when the SatNet misclassified almost all pixels in an image. In the first example, as mentioned in the Dataset chapter, in some of the images in the dataset it is not very clear if there is forest or just bushes and our model performed quite bad on those. In \ref{satnet_worst1}, one could make an argument that the green parts are bushes and not really forest, but the segmentation of our model seems more appropriate than claiming that there is no forest at all. In addition to that, the SatNet actually covered the forest really accurately, which makes it unfortunate that this is an image with one of the worst scores.
 
@@ -72,3 +72,15 @@ Then again, bad performances also occur on images where the given masks are comp
 \end{figure}
 
 \subsubsection{Average Performance}
+
+We will just give three quick examples of an average performance to give an insight to how the SatNet performed. In \ref{satnet_avg} we can see three images, where the SatNet did not miss any forest parts, but seems to struggle with fields again. The forest was identified very accurately, sometimes better than the true mask, but the SatNet seems to identify every field quite confidently as forest.
+
+\begin{figure}[h!]
+\begin{center}
+  \label{satnet_avg}
+  \includegraphics[width=.3\linewidth]{images/satellite_images/sat_avg1}
+  \includegraphics[width=.3\linewidth]{images/satellite_images/sat_avg2}
+  \includegraphics[width=.3\linewidth]{images/satellite_images/sat_avg3}
+  \caption{Images where SatNet had a decent Jaccard index on. The left one has a field in the bottom left corner. The middle one has wine on the top side of the image. The right one has a field in the top left corner.}
+  \end{center}
+\end{figure}

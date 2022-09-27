@@ -1,7 +1,17 @@
+\section{Conclusion}
 
-\begin{enumerate}
-  \item individual training for SatNet or experiment with structure (unet also)
-  \item more time, resources
-  \item happy with results?
-  \item maybe approach without nn but probably peak NN would be better
-\end{enumerate}
+In summary, all models we trained performed quite decently on our dataset and definetly succeeded in finding forest on satellite images. More often, the problem is overclassifying pixels as forest, which in reality are fields or something else.
+
+Comparing the results of our different models, sadly there is no real contrast between the individual approaches, because they all had a similar score and more or less the same strengths and weaknesses. This could very well be a consequence of the U-Net and SatNet having the exact same training algorithm, so that their difference in structure mattered less than the fact that they followed the same learning procedure.
+
+\textbf{\color{red} hier noch was zu svm dass die ca genauso gut wie nns funktionieren}\\
+
+\section{Outlook}
+
+As always in machine learning projects, more time and resources could have improved results. Especially with such a deep network as the U-Net, experimenting with different structures, more training algorithms than just ADAM and SGD and perhaps a grid search for the optimal hyperparameters would have given us the optimal setup to train a model, which can identify forest in a satellite image. Naturally, the same goes for the SatNet, where on can always try out different filter sizes, channel sizes and block lengths, but in the end the structures we settled for gave good results.
+
+In addition, another thing to experiment with is to workout a different training procedure for the SatNet. We just applied the same steps we used for the U-Net, but maybe different optimisers or algorithms can improve and accelerate the training process, especially given that the net structure of SatNet differs a lot from the U-Net.
+
+Lastly, going through the dataset and looking for problematic masks could give more accurate results, because with refined masks the amount of brown ground classified as forest goes down a lot, which would probably immensely help with our models classifying fields as forest. It would also result in more precise loss and score functions.
+
+\textbf{\color{red} Hier noch part ob man SVM etc. improven könnte}

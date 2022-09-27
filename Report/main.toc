@@ -30,7 +30,9 @@
 \contentsline {section}{\numberline {5.3}Results}{24}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Interesting Data}{24}{section.5.4}%
 \contentsline {subsubsection}{Strengths}{24}{subsubsection*.25}%
-\contentsline {subsubsection}{Weaknesses}{24}{subsubsection*.26}%
-\contentsline {subsubsection}{Average Performance}{25}{subsubsection*.30}%
-\contentsline {chapter}{\numberline {6}U-Net vs. SatNet}{26}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Outlook}{27}{chapter.7}%
+\contentsline {subsubsection}{Weaknesses}{24}{subsubsection*.27}%
+\contentsline {subsubsection}{Average Performance}{26}{subsubsection*.30}%
+\contentsline {chapter}{\numberline {6}U-Net vs. SatNet}{27}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusion and Outlook}{28}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusion}{28}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Outlook}{28}{section.7.2}%
