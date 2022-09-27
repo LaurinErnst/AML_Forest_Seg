@@ -57,11 +57,11 @@ sorting=ynt
 
 %redesign chapter and section headings
 \newcommand{\hsp}{\hspace{20pt}}
-\titleformat{\chapter}[hang]{\HUGE}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Large}
-\titlespacing*{\chapter}{0pt}{0pt}{30pt}
-\titleformat{\section}[hang]{\Large}{\thesection}{15pt}{\large}
-\titlespacing*{\section}{0pt}{0pt}{20pt}
-\titleformat{\subsection}[hang]{\Large}{\thesection}{15pt}{\large}
+% \titleformat{\chapter}[hang]{\HUGE}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Large}
+% \titlespacing*{\chapter}{0pt}{0pt}{30pt}
+% \titleformat{\section}[hang]{\Large}{\thesection}{15pt}{\large}
+% \titlespacing*{\section}{0pt}{0pt}{20pt}
+% \titleformat{\subsection}[hang]{\Large}{\thesection}{15pt}{\large}
 
 
 %include and design page headers
@@ -187,6 +187,7 @@ sorting=ynt
 \pagenumbering{roman}
 
 
+x
 \tableofcontents
 
 \thispagestyle{empty}\null\newpage
@@ -194,20 +195,24 @@ sorting=ynt
 \pagenumbering{arabic}
 \chapter{Introduction}
 \input{chapters/introduction}
-\chapter{Dataset}
+\chapter{Data Preprocessing}
 \input{chapters/data_prep}
 \chapter{Naive Segmentator + Jaccard?}
 \input{chapters/jaccard}
 \chapter{Unet}
 \input{chapters/unet_training}
-\input{chapters/eval}
-\clearpage
-\input{chapters/sgd_vs_adam.tex}
+
 \chapter{SatNet}
 \input{chapters/satnet}
+<<<<<<< HEAD
 \chapter{U-Net vs. SatNet}
 evtl in Conclusion wenn nicht so lang?
 \chapter{Conclusion and Outlook}
+=======
+\chapter{Critical Input}
+
+\chapter{Outlook}
+>>>>>>> 4525d948183ac69691793c507720e3f62ad200be
 \input{chapters/outlook}
 
 % \printbibliography
