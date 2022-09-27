@@ -78,7 +78,7 @@ and so
 $n$ is a constant throughout the dataset, but $m$ differs for every image. The average of the dataset is $m=40900$, so we can say that our models perform better than guessing if their average Jaccard index is greater than $J = 0.39$ (confirmed by random simulations). We could try to improve the random segmentator by adjusting the guess rate according to the proportion of forest in the dataset, but experiments show that this does not make a big difference in performance.
 
 \section{Segmentation without Neural Networks}
-As we have seen in the final project of the lecture "Fundamentals of Machine Learning", rather simple machine learning methods could outperform far more complex structures. Thus, we decided to implement a model that does not rely on neural networks. \\
+As we have seen in the final project of the lecture "Fundamentals of Machine Learning", rather simple machine learning methods could outperform far more complex structures. Thus, we decided to implement a model that does not rely on neural networks, but uses hand-crafted features instead. \\
 The model we created works in the following way:
 \begin{enumerate}
 	\item Use a common segmentation algorithm to split the satellite image in segments.
@@ -87,5 +87,36 @@ The model we created works in the following way:
 	\item Join all the segments (now consisting of binary data) to obtain a prediction mask.
 \end{enumerate}
 
-\subsection{Segmentation of images}
-In order to segment the satellite images in the first step, we use the Felzenszwalb-Huttenlocher algorithm (Zitat!!!!!!!!!!!!!!!!!!!!)
+\textbf{Step 1: Pre-segmentation of images}
+
+In order to segment the satellite images in the first step, we use the Felzenszwalb-Huttenlocher algorithm (Zitat!!!!!!!!!!!!!!!!!!!!). This is a fast graph-based algorithm that has the advantage that it does not tend to "oversegment" plain areas as much as other segmentation algorithms like $k$-means clustering.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.8\linewidth]{satellite_images/segments_fz.jpg}
+	\caption{Felzenswalb-Huttenlocher segmentation of image 31 in the dataset.}
+\end{figure}
+
+\textbf{Step 2: Computing features}
+
+As a second step, we compute the features for each segment we found in the previous step. We could think of three meaningful features that should help identifying forest areas. 
+
+The most obvious one is the color: usually, forest appears to be green. Unfortunately, the color tone is not unique at all. Most of the times, there is a big proportion of blue or red mixed into the color of forest regions, so we couldn't only use the green layer of the RGB satellite image. Instead, we calculated the difference between the averages of the green layer and the other two and chose this value as a feature, so
+\begin{equation}
+	f_1=2\bar{g}-\bar{r}-\bar{b},
+\end{equation}
+where $\bar{g}$, $\bar{r}$ and $\bar{b}$ stand for the averages of the respective color values in each segment.
+
+Generally, it can be stated that forest segments are darker than the surrounding areas. By converting the original image to a gray-scale image, we can easily compute the average brightness. We chose this value as our second feature.
+
+By only using color and brightness, it is hard to differentiate between forest and grass regions for example. One feature that might help to decide whether it is a forest or a non-forest region is the standard deviation of the brightness within a segment. Grass regions are typically very smooth, whereas forest shows a larger difference between bright and dark spots due to the many shadows of trees. We observed that it is useful to use apply a Gaussian filter for bluring high frequency noise, because even areas that appear to be flat can have a brightness variation.
+
+\textbf{Step 3: Preparation of the data set and training the models}
+
+For training our models, it is important to have a proper data set. So we split the whole set of images in masks into training and a test set. We used $1500$ for training our models. This seemed to be a sufficiently large number, especially because each image was split again in around $70$ segments, so we got $105,000$ segments overall. Furthermore, each segment had to be labelled in the training data. Thus, we compared the true mask with each segment and if more than 95\% of a segment was covered by forest, we labelled that segment to be a forest region. Additionally, we created a vector consisting of weights which coincide with the logarithm of the segment size, because our model should be better in classifying the bigger segments correctly. We chose to use the logarithm because the sizes of the segments are highly variable and range between 30 up to more than 10,000 pixels. 
+
+We then trained different common classifiers on our training set. Since we have a binary outcome, it was obvious to use logistic regression or a support vector machine, but we tried other methods like random forests and QDA as well. 
+
+\textbf{Step 4: Join the segments}
+
+Our test set consi
